@@ -1,0 +1,111 @@
+.flex-container {
+    position: relative;
+    float: left;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.flex-item {
+    height: 100%;
+    border: 1px solid #dee2e6;
+    text-align: center;
+    margin: 5px;
+}
+
+.sidedoc .flex-container {
+    position: relative;
+    float: left;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 20px;
+    background: linear-gradient(135deg, #6dd5ed, #2193b0);
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+
+.sidedoc .flex-item {
+    height: 100%;
+    border: 1px solid #dee2e6;
+    text-align: center;
+    margin: 5px;
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    width: 95%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.sidedoc .flex-item:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    background-color: #e0f7fa;
+}
+
+.flex-container .flex-item img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 15px;
+}
+
+.flex-container .flex-item h3 {
+    font-size: 18px;
+    color: #2193b0;
+    margin-bottom: 10px;
+}
+
+.flex-container .flex-item p {
+    font-size: 14px;
+    color: #555;
+}
+
+
+
+
+
+
+
+
+
+
+
+.card-body {
+    padding: 1rem;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+}
+
+.card-subtitle {
+    font-size: 1rem;
+    color: #6c757d;
+    margin-bottom: 1rem;
+}
+
+.card-text {
+    margin-bottom: 1rem;
+}
+
+.icon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+    margin-right: 0.5rem;
+}
+
+
+
+
+
+
+
+
+
+

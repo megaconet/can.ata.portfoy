@@ -1,0 +1,141 @@
+/* Clear floats after the docs */
+#root:after {
+  content: "";
+  display: table;
+  clear: both;
+  position: relative;
+  margin: 0 auto;
+}
+
+/* Clear floats after the docs */
+#root {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  transition: width 2s;
+}
+
+#root::before {
+  content: "";
+  opacity: 0.2;
+  background-image: url(asset/img/rough.jpg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+/* Add some basic styling to the navbar */
+.header nav {
+  display: table;
+  width: 100%;
+  height: 16vh;
+  margin-left: 5%;
+}
+
+/* Add some basic styling to the navbar */
+.header nav ul {
+  height: 16vh;
+}
+
+/* Style the navigation links */
+.header nav li {
+  width: 10%;
+  height: 16vh;
+  display: table-cell;
+  vertical-align: middle;
+  color: #f2f2f2;
+  text-decoration: none;
+}
+
+/* Style the navigation links */
+nav a {
+  display: inline-block;
+  font-size: 1vw;
+  text-align: center;
+  width: 100%;
+  color: #0c0c0c;
+}
+
+/* Change color on hover */
+nav li:hover {
+  color: #0c0c0c;
+  font-weight: bold;
+}
+
+
+/* Add some basic styling to the navbar */
+.main nav {
+  display: table;
+  width: 100%;
+  height: 100vh;
+}
+
+/* Add some basic styling to the navbar */
+.main nav ul {
+  height: 100vh;
+  border-spacing: 0px;
+}
+
+/* Style the navigation links */
+.main nav li {
+  height: 100vh;
+  display: table-cell;
+  vertical-align: middle;
+  color: #f2f2f2;
+  border: 2px solid #cbcbcb;
+  text-decoration: none;
+}
+
+
+
+/* Blogger */
+.blogger {
+  float: left;
+  width: 100%;
+  height: 16vh;
+}
+
+/* Ekran boyutuna göre düzenlemeler */
+@media screen and (min-width: 768px) {
+  .sidebar {
+    width: 15%;
+    height: auto;
+    position: relative;
+    float: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+  }
+}
+
+/* Ekran boyutuna göre düzenlemeler */
+@media only screen and (max-width: 768px) {
+  .sidebar {
+    width: 15%;
+    height: auto;
+    position: relative;
+    float: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+  }
+}
+
+
+/* Left doc */
+.leftdoc {
+  float: right;
+  width: 70%;
+  margin-right: 15%;
+  height: 100%;
+}

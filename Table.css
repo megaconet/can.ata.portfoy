@@ -1,0 +1,36 @@
+/* CSS */
+.grid {
+    position: relative;
+    float: left;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    height: auto;
+}
+
+.grid-item {
+    border: 20px solid #ececec;
+    border-top-right-radius: 2rem;
+    border-top-left-radius: 2rem;
+    padding: 10px;
+}
+
+/* Ekran boyutuna göre düzenlemeler */
+@media only screen and (min-width: 768px) {
+
+    /* Sub doc */
+    .grid.expanded {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+/* Ekran boyutuna göre düzenlemeler */
+@media only screen and (max-width: 768px) {
+
+    /* Sub doc */
+    .grid.expanded {
+        grid-template-columns: 1fr;
+    }
+
+}

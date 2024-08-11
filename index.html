@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>React app</title>
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="App.css">
+  <link rel="stylesheet" href="Table.css">
+  <link rel="stylesheet" href="Template.css">
+  <link rel="stylesheet" href="Normalize.css">
+  <link rel="stylesheet" href="Slider.css">
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState, useEffect } = React;
+
+    const SLIDES = [
+      'static/22html.png',
+      'static/21html.png',
+      'static/20html.png',
+      'static/19html.png',
+      'static/18html.png',
+      'static/17html.png',
+      'static/16html.png',
+      'static/15html.png',
+      'static/14html.png',
+      'static/13html.png',
+      'static/12html.png',
+      'static/11html.png',
+      'static/10html.png',
+      'static/09html.png',
+      'static/08html.png',
+      'static/07html.png',
+      'static/06html.png',
+      'static/05html.png',
+      'static/04html.png',
+      'static/03html.png',
+      'static/02html.png',
+      'static/01html.png'
+    ];
+
+    const TEXTS = [
+      'Dijital Dershanem - Ögrenme Yönetim Sistemi Geliştirme',
+      'Dijital Dershanem - Kullanıcı Girişi Modülü Geliştirme, Dogrulama',
+      'Dijital Dershanem - Frontend teknolojileri, JavaScript, Tailwind CSS kütüphaneleri',
+      'Dijital Dershanem - B2B Dashboard çözümleri, Responsive site ve Prototip tasarımı',
+      'Tusdata, WordPress Eklenti Geliştirme | www.tusdata.com',
+      'Dusdata, Arayüz Tasarımı | www.dusdata.com',
+      'Tusdata, WordPress Site Geliştirme | www.tusdata.com',
+      'Plotter Sarf, Yazılım problem çözme | www.plottersarf.com/omer',
+      'Etail, Panel/eklenti güncellemeleri | etail.com.tr',
+      'Etail Market, Opencart site geliştirme | etail.market',
+      'Coin Modules, Arayüz bileşen uygulamaları',
+      'Fermanoglu Grup, Arayüz tasarımı',
+      'Birbölüiki Bilişim, Slider tasarımı | E-Ticaret website',
+      'Birbölüiki Bilişim, Slider tasarımı | E-Ticaret website',
+      'Marin Spa, WordPress site hızı optimizasyonu | www.marinspa.com.tr',
+      'Ay Mücevher, Sosyal medya katalog entegrasyonu | www.aymucevher.com',
+      'Gamador Assist, Google haritalar kurulumu | www.gamadorassist.com',
+      'Mas Rent A Car, Google haritalar kurulumu | www.masarackiralama.com',
+      'Plotter Sarf, Tema ve eklentilerde ileri düzeyde css | www.plottersarf.com/omer',
+      'Design Köln, Görsel tasarım ve şablon düzenlemeleri | www.designkoln.com',
+      'Fermanoglu Grup, Kurumsal site geliştirme',
+      'Fermanoglu Grup, Kurumsal site geliştirme'
+    ];
+
+    function CustomFunction() {
+      const [currentIndex, setCurrentIndex] = useState(0);
+
+      const handleNext = () => {
+        setCurrentIndex((currentIndex + 1) % SLIDES.length);
+      };
+
+      const handlePrev = () => {
+        setCurrentIndex((currentIndex - 1 + SLIDES.length) % SLIDES.length);
+      };
+      return (
+        <div className="App">
+
+
+          <div className="blogger">
+
+            <div className="card-body">
+              <h5 className="card-title">Can Ata</h5>
+              <h6 className="card-subtitle">ReactJS Uzmanı, Frontend Geliştirici, NodeJS Uzmanı, Javascript Uzmanı, Php Uzmanı, Wordpress Uzmanı, WooCommerce E-Ticaret Geliştirici</h6>
+              <p className="card-text">Mersin, TÜRKİYE</p>
+              <svg className="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                <path
+                  d="M5.5 2A3.5 3.5 0 0 0 2 5.5v5A3.5 3.5 0 0 0 5.5 14h5a3.5 3.5 0 0 0 3.5-3.5V8a.5.5 0 0 1 1 0v2.5a4.5 4.5 0 0 1-4.5 4.5h-5A4.5 4.5 0 0 1 1 10.5v-5A4.5 4.5 0 0 1 5.5 1H8a.5.5 0 0 1 0 1z" />
+                <path d="M16 3a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+              </svg>
+              <svg className="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                <path
+                  d="M5.5 2A3.5 3.5 0 0 0 2 5.5v5A3.5 3.5 0 0 0 5.5 14h5a3.5 3.5 0 0 0 3.5-3.5V8a.5.5 0 0 1 1 0v2.5a4.5 4.5 0 0 1-4.5 4.5h-5A4.5 4.5 0 0 1 1 10.5v-5A4.5 4.5 0 0 1 5.5 1H8a.5.5 0 0 1 0 1z" />
+                <path d="M16 3a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+              </svg>
+            </div>
+
+          </div>
+
+          <div className="sidebar" >
+
+            <div className="sidedoc"  >
+
+
+
+              <div className="flex-container">
+                <div className="flex-item">
+                  <img src="./asset/img/user.png" alt="Icon 1" />
+                  <h6 className="card-subtitle">Can Ata</h6>
+                  <p className="card-text">Anadolu Üniversitesi Eylül 2021. Bilgisayar Teknolojileri Bölümü, Web Tasarımı ve Kodlama Ön Lisans</p>
+                </div>
+                <div className="flex-item">
+                  <img src="./asset/img/envelope.png" alt="Icon 1" />
+                  <h3>E-Posta</h3>
+                  <p>canata09074@gmail.com</p>
+                </div>
+                <div className="flex-item">
+                  <img src="./asset/img/phone.png" alt="Icon 1" />
+                  <h3>Telefon</h3>
+                  <p>+90 552 658 05 62</p>
+                </div>
+              </div>
+
+
+            </div>
+
+
+          </div>
+
+
+
+
+          <div className="middledoc" >
+
+            <div className="grid" >
+
+              <div class="grid-item">
+
+                <div>
+                  <div className="slider">
+                    <div
+                      className="slides"
+                      style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+                    >
+                      {SLIDES.map((slide, index) => (
+                        <div key={index} className="slide-container">
+                          <img src={slide} alt={`Slide ${index + 1}`} className="slide" />
+                          <div className="slider-text">
+
+                            <p className="slide-text">{TEXTS[index]}
+                            </p>
+                          </div>
+
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="controls">
+                    <button onClick={handlePrev}>Önceki Proje</button>
+                    <button onClick={handleNext}>Sonraki Proje</button>
+                  </div>
+                </div>
+
+              </div>
+
+
+
+
+            </div>
+
+          </div>
+
+
+
+
+
+          <div className="leftdoc">
+
+
+
+          </div>
+
+
+        </div>
+      );
+    };
+
+    function App() {
+
+      return (
+        <CustomFunction />
+      );
+    };
+
+    const container = document.getElementById('root');
+    const root = ReactDOM.createRoot(container);
+    root.render(
+      <App />
+
+    )
+  </script>
+</body>
+
+</html>
