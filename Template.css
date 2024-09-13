@@ -109,3 +109,59 @@
 
 
 
+
+
+.title,
+.subtitle,
+.component {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.subtitle {
+    margin-top: 100px;
+}
+
+.subtitle h2 {
+    color: darkgray;
+}
+
+.component {
+    display: flex;
+    justify-content: space-around;
+}
+
+
+.box {
+    width: 23%;
+    height: auto;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 1rem;
+    padding-bottom: 1rem;
+    text-align: left;
+    margin: 10px;
+}
+
+
+.box img {
+    width: 50px;
+    height: 50px;
+    margin: 10%;
+    padding: 2%;
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+}
+
+.box h3 {
+    font-size: 18px;
+    color: #2193b0;
+    margin-bottom: 10px;
+}
+
+.box p {
+    font-size: 18px;
+    color: #555;
+    padding: 0% 10%;
+}
