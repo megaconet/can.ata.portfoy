@@ -85,6 +85,31 @@
       const handlePrev = () => {
         setCurrentIndex((currentIndex - 1 + SLIDES.length) % SLIDES.length);
       };
+
+
+
+      useEffect(() => {
+        window.gtranslateSettings = {
+          default_language: "tr",
+          languages: ["tr", "de", "en"],
+          wrapper_selector: ".gtranslate_wrapper",
+          switcher_horizontal_position: "right",
+          switcher_vertical_position: "top"
+        };
+
+        const script = document.createElement('script');
+        script.src = "https://cdn.gtranslate.net/widgets/latest/float.js";
+        script.defer = true;
+        document.body.appendChild(script);
+
+        return () => {
+          document.body.removeChild(script);
+        };
+      }, []);
+
+
+      
+      
       return (
         <div className="App">
 
@@ -216,7 +241,7 @@
 
           </div>
 
-
+          <div className="gtranslate_wrapper"></div>
         </div>
       );
     };
