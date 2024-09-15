@@ -77,6 +77,10 @@
 
 
 
+/*
+ * Table
+ */
+
 
 .leftdoc .flex-container {
     position: relative;
@@ -91,6 +95,15 @@
     box-shadow: none;
 }
 
+/* Clear floats after the docs */
+.leftdoc .flex-item:after {
+    content: "";
+    display: table;
+    clear: both;
+    position: relative;
+    margin: 0 auto;
+}
+
 .leftdoc .flex-item {
     flex: 1;
     height: 100%;
@@ -101,6 +114,12 @@
     text-align: center;
     margin: 10px;
 }
+
+
+/*
+ * Component
+ */
+
 
 .card-body {
     padding: 1rem;
