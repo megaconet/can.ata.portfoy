@@ -12,79 +12,44 @@
   <link rel="stylesheet" href="Template.css">
   <link rel="stylesheet" href="Normalize.css">
   <link rel="stylesheet" href="Slider.css">
+  <style>
+    .slick-slide img {
+      width: 100%;
+      position: relative;
+      float: left;
+      height: auto;
+    }
+  </style>
 </head>
 
 <body>
   <div id="root"></div>
 
+
+  <!-- Slick Carousel CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <!-- Slick Carousel JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+
+
   <script type="text/babel">
-    const { useState, useEffect } = React;
+    const { useEffect } = React;
 
     const konuStili = {
       background: 'none',
       backgroundColor: 'beige',
     };
 
-    const SLIDES = [
-      'static/22html.png',
-      'static/21html.png',
-      'static/20html.png',
-      'static/19html.png',
-      'static/18html.png',
-      'static/17html.png',
-      'static/16html.png',
-      'static/15html.png',
-      'static/14html.png',
-      'static/13html.png',
-      'static/12html.png',
-      'static/11html.png',
-      'static/10html.png',
-      'static/09html.png',
-      'static/08html.png',
-      'static/07html.png',
-      'static/06html.png',
-      'static/05html.png',
-      'static/04html.png',
-      'static/03html.png',
-      'static/02html.png',
-      'static/01html.png'
-    ];
-
-    const TEXTS = [
-      'Dijital Dershanem - Ögrenme Yönetim Sistemi Geliştirme',
-      'Dijital Dershanem - Kullanıcı Girişi Modülü Geliştirme, Dogrulama',
-      'Dijital Dershanem - Frontend teknolojileri, JavaScript, Tailwind CSS kütüphaneleri',
-      'Dijital Dershanem - B2B Dashboard çözümleri, Responsive site ve Prototip tasarımı',
-      'Tusdata, WordPress Eklenti Geliştirme | www.tusdata.com',
-      'Dusdata, Arayüz Tasarımı | www.dusdata.com',
-      'Tusdata, WordPress Site Geliştirme | www.tusdata.com',
-      'Plotter Sarf, Yazılım problem çözme | www.plottersarf.com/omer',
-      'Etail, Panel/eklenti güncellemeleri | etail.com.tr',
-      'Etail Market, Opencart site geliştirme | etail.market',
-      'Coin Modules, Arayüz bileşen uygulamaları',
-      'Fermanoglu Grup, Arayüz tasarımı',
-      'Birbölüiki Bilişim, Slider tasarımı | E-Ticaret website',
-      'Birbölüiki Bilişim, Slider tasarımı | E-Ticaret website',
-      'Marin Spa, WordPress site hızı optimizasyonu | www.marinspa.com.tr',
-      'Ay Mücevher, Sosyal medya katalog entegrasyonu | www.aymucevher.com',
-      'Gamador Assist, Google haritalar kurulumu | www.gamadorassist.com',
-      'Mas Rent A Car, Google haritalar kurulumu | www.masarackiralama.com',
-      'Plotter Sarf, Tema ve eklentilerde ileri düzeyde css | www.plottersarf.com/omer',
-      'Design Köln, Görsel tasarım ve şablon düzenlemeleri | www.designkoln.com',
-      'Fermanoglu Grup, Kurumsal site geliştirme',
-      'Fermanoglu Grup, Kurumsal site geliştirme'
-    ];
+    const baslikStili = {
+      position: 'relative',
+      float: 'left',
+      width: '70%',
+    };
 
     function CustomFunction() {
-      const [currentIndex, setCurrentIndex] = useState(0);
-
-      const handleNext = () => {
-        setCurrentIndex((currentIndex + 1) % SLIDES.length);
-      };
-
-      const handlePrev = () => {
-        setCurrentIndex((currentIndex - 1 + SLIDES.length) % SLIDES.length);
-      };
 
 
 
@@ -105,6 +70,21 @@
         return () => {
           document.body.removeChild(script);
         };
+      }, []);
+
+
+
+
+      useEffect(() => {
+        if (window.$) {
+          $('.carousel').slick({
+            dots: true,
+            infinite: true,
+            speed: 500,
+            slidesToShow: 1,
+            slidesToScroll: 1
+          });
+        }
       }, []);
 
 
@@ -131,6 +111,9 @@
 
           </div>
 
+
+
+
           <div className="sidebar" >
 
 
@@ -142,42 +125,1199 @@
 
           <div className="middledoc" >
 
-            <div className="grid" >
 
-              <div class="grid-item">
+            <div className="middledoc">
+              <div className="carousel">
+
+
+
+
 
                 <div>
-                  <div className="slider">
-                    <div
-                      className="slides"
-                      style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-                    >
-                      {SLIDES.map((slide, index) => (
-                        <div key={index} className="slide-container">
-                          <img src={slide} alt={`Slide ${index + 1}`} className="slide" />
-                          <div className="slider-text">
 
-                            <p className="slide-text">{TEXTS[index]}
-                            </p>
-                          </div>
+                  <div className="sidebar">
 
-                        </div>
-                      ))}
+                    <div className="sidedoc">
+
+
+
                     </div>
+
                   </div>
-                  <div className="controls">
-                    <button onClick={handlePrev}>Önceki Proje</button>
-                    <button onClick={handleNext}>Sonraki Proje</button>
+
+                  <div style={baslikStili}>
+                    <h3>Ögrenme Yönetim Sistemi Geliştirme</h3>
+                    <p>Dijital Dershanem</p>
+                    <img src="./static/22html.png" alt="Slide 1" />
                   </div>
+
+                  <div className="sidebar">
+
+                    <div className="sidedoc">
+
+                      <div className="flex-container">
+                        <div className="flex-item">
+                          <h3>Proje adı:</h3>
+                          <p>Dijital Dershanem</p>
+                        </div>
+                        <div className="flex-item">
+                          <h3>Yazılım Teknolojisi:</h3>
+                          <div className="div">
+                            <img src="./asset/logo/react.png" alt="Icon 1" />
+                          </div>
+                          <div className="document">
+                            <p>ReactJS</p>
+                          </div>
+                        </div>
+                        <div className="flex-item">
+                          <h3>Web adresi:</h3>
+                          <div className="div">
+                            <img src="./asset/img/globe.png" alt="Icon 1" />
+                          </div>
+                          <div className="document">
+                            <p></p>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+                <div>
+
+                  <div className="sidebar">
+
+                    <div className="sidedoc">
+
+
+
+                    </div>
+
+                  </div>
+
+                  <div style={baslikStili}>
+                    <h3>Kullanıcı Girişi Modülü Geliştirme, Dogrulama</h3>
+                    <p>Dijital Dershanem</p>
+                    <img src="./static/21html.png" alt="Slide 1" />
+                  </div>
+
+                  <div className="sidebar">
+
+                    <div className="sidedoc">
+
+                      <div className="flex-container">
+                        <div className="flex-item">
+                          <h3>Proje adı:</h3>
+                          <p>Dijital Dershanem</p>
+                        </div>
+                        <div className="flex-item">
+                          <h3>Yazılım Teknolojisi:</h3>
+                          <div className="div">
+                            <img src="./asset/logo/react.png" alt="Icon 1" />
+                          </div>
+                          <div className="document">
+                            <p>ReactJS</p>
+                          </div>
+                        </div>
+                        <div className="flex-item">
+                          <h3>Web adresi:</h3>
+                          <div className="div">
+                            <img src="./asset/img/globe.png" alt="Icon 1" />
+                          </div>
+                          <div className="document">
+                            <p></p>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+                <div>
+
+                  <div className="sidebar">
+
+                    <div className="sidedoc">
+
+
+
+                    </div>
+
+                  </div>
+
+                  <div style={baslikStili}>
+                    <h3>Frontend teknolojileri, JavaScript, Tailwind CSS kütüphaneleri</h3>
+                    <p>Dijital Dershanem</p>
+                    <img src="./static/20html.png" alt="Slide 1" />
+                  </div>
+
+                  <div className="sidebar">
+
+                    <div className="sidedoc">
+
+                      <div className="flex-container">
+                        <div className="flex-item">
+                          <h3>Proje adı:</h3>
+                          <p>Dijital Dershanem</p>
+                        </div>
+                        <div className="flex-item">
+                          <h3>Yazılım Teknolojisi:</h3>
+                          <div className="div">
+                            <img src="./asset/logo/react.png" alt="Icon 1" />
+                          </div>
+                          <div className="document">
+                            <p>ReactJS</p>
+                          </div>
+                        </div>
+                        <div className="flex-item">
+                          <h3>Web adresi:</h3>
+                          <div className="div">
+                            <img src="./asset/img/globe.png" alt="Icon 1" />
+                          </div>
+                          <div className="document">
+                            <p></p>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+                <div>
+
+                  <div className="sidebar">
+
+                    <div className="sidedoc">
+
+
+
+                    </div>
+
+                  </div>
+
+                  <div style={baslikStili}>
+                    <h3>B2B Dashboard çözümleri, Responsive site ve Prototip tasarımı</h3>
+                    <p>Dijital Dershanem</p>
+                    <img src="./static/19html.png" alt="Slide 1" />
+                  </div>
+
+                  <div className="sidebar">
+
+                    <div className="sidedoc">
+
+                      <div className="flex-container">
+                        <div className="flex-item">
+                          <h3>Proje adı:</h3>
+                          <p>Dijital Dershanem</p>
+                        </div>
+                        <div className="flex-item">
+                          <h3>Yazılım Teknolojisi:</h3>
+                          <div className="div">
+                            <img src="./asset/logo/react.png" alt="Icon 1" />
+                          </div>
+                          <div className="document">
+                            <p>ReactJS</p>
+                          </div>
+                        </div>
+                        <div className="flex-item">
+                          <h3>Web adresi:</h3>
+                          <div className="div">
+                            <img src="./asset/img/globe.png" alt="Icon 1" />
+                          </div>
+                          <div className="document">
+                            <p></p>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+                <div>
+
+                  <div className="sidebar">
+
+                    <div className="sidedoc">
+
+
+
+                    </div>
+
+                  </div>
+
+                  <div style={baslikStili}>
+                    <h3>WordPress Eklenti Geliştirme</h3>
+                    <p>Tusdata</p>
+                    <img src="./static/18html.png" alt="Slide 1" />
+                  </div>
+
+                  <div className="sidebar">
+
+                    <div className="sidedoc">
+
+                      <div className="flex-container">
+                        <div className="flex-item">
+                          <h3>Proje adı:</h3>
+                          <p>Tusdata</p>
+                        </div>
+                        <div className="flex-item">
+                          <h3>Yazılım Teknolojisi:</h3>
+                          <div className="div">
+                            <img src="./asset/logo/wordpress.png" alt="Icon 1" />
+                          </div>
+                          <div className="document">
+                            <p>WordPress</p>
+                          </div>
+                        </div>
+                        <div className="flex-item">
+                          <h3>Web adresi:</h3>
+                          <div className="div">
+                            <img src="./asset/img/globe.png" alt="Icon 1" />
+                          </div>
+                          <div className="document">
+                            <p>www.tusdata.com</p>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+                <div>
+
+                  <div className="sidebar">
+
+                    <div className="sidedoc">
+
+
+
+                    </div>
+
+                  </div>
+
+                  <div style={baslikStili}>
+                    <h3>Arayüz Tasarımı</h3>
+                    <p>Dusdata</p>
+                    <img src="./static/17html.png" alt="Slide 1" />
+                  </div>
+
+                  <div className="sidebar">
+
+                    <div className="sidedoc">
+
+                      <div className="flex-container">
+                        <div className="flex-item">
+                          <h3>Proje adı:</h3>
+                          <p>Dusdata</p>
+                        </div>
+                        <div className="flex-item">
+                          <h3>Yazılım Teknolojisi:</h3>
+                          <div className="div">
+                            <img src="./asset/logo/wordpress.png" alt="Icon 1" />
+                          </div>
+                          <div className="document">
+                            <p>WordPress</p>
+                          </div>
+                        </div>
+                        <div className="flex-item">
+                          <h3>Web adresi:</h3>
+                          <div className="div">
+                            <img src="./asset/img/globe.png" alt="Icon 1" />
+                          </div>
+                          <div className="document">
+                            <p>www.dusdata.com</p>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+                <div>
+
+                  <div className="sidebar">
+
+                    <div className="sidedoc">
+
+
+
+                    </div>
+
+                  </div>
+
+                  <div style={baslikStili}>
+                    <h3>WordPress Site Geliştirme</h3>
+                    <p>Tusdata</p>
+                    <img src="./static/16html.png" alt="Slide 1" />
+                  </div>
+
+                  <div className="sidebar">
+
+                    <div className="sidedoc">
+
+                      <div className="flex-container">
+                        <div className="flex-item">
+                          <h3>Proje adı:</h3>
+                          <p>Tusdata</p>
+                        </div>
+                        <div className="flex-item">
+                          <h3>Yazılım Teknolojisi:</h3>
+                          <div className="div">
+                            <img src="./asset/logo/wordpress.png" alt="Icon 1" />
+                          </div>
+                          <div className="document">
+                            <p>WordPress</p>
+                          </div>
+                        </div>
+                        <div className="flex-item">
+                          <h3>Web adresi:</h3>
+                          <div className="div">
+                            <img src="./asset/img/globe.png" alt="Icon 1" />
+                          </div>
+                          <div className="document">
+                            <p>www.tusdata.com</p>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+                <div>
+
+                  <div className="sidebar">
+
+                    <div className="sidedoc">
+
+
+
+                    </div>
+
+                  </div>
+
+                  <div style={baslikStili}>
+                    <h3>Yazılım problem çözme</h3>
+                    <p>Plotter Sarf</p>
+                    <img src="./static/15html.png" alt="Slide 1" />
+                  </div>
+
+                  <div className="sidebar">
+
+                    <div className="sidedoc">
+
+                      <div className="flex-container">
+                        <div className="flex-item">
+                          <h3>Proje adı:</h3>
+                          <p>Plotter Sarf</p>
+                        </div>
+                        <div className="flex-item">
+                          <h3>Yazılım Teknolojisi:</h3>
+                          <div className="div">
+                            <img src="./asset/logo/php.png" alt="Icon 1" />
+                          </div>
+                          <div className="document">
+                            <p>Php</p>
+                          </div>
+                        </div>
+                        <div className="flex-item">
+                          <h3>Web adresi:</h3>
+                          <div className="div">
+                            <img src="./asset/img/globe.png" alt="Icon 1" />
+                          </div>
+                          <div className="document">
+                            <p>www.plottersarf.com/omer</p>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+                <div>
+
+                  <div className="sidebar">
+
+                    <div className="sidedoc">
+
+
+
+                    </div>
+
+                  </div>
+
+                  <div style={baslikStili}>
+                    <h3>Panel/eklenti güncellemeleri</h3>
+                    <p>Etail</p>
+                    <img src="./static/14html.png" alt="Slide 1" />
+                  </div>
+
+                  <div className="sidebar">
+
+                    <div className="sidedoc">
+
+                      <div className="flex-container">
+                        <div className="flex-item">
+                          <h3>Proje adı:</h3>
+                          <p>Etail</p>
+                        </div>
+                        <div className="flex-item">
+                          <h3>Yazılım Teknolojisi:</h3>
+                          <div className="div">
+                            <img src="./asset/logo/opencart.png" alt="Icon 1" />
+                          </div>
+                          <div className="document">
+                            <p>Opencart</p>
+                          </div>
+                        </div>
+                        <div className="flex-item">
+                          <h3>Web adresi:</h3>
+                          <div className="div">
+                            <img src="./asset/img/globe.png" alt="Icon 1" />
+                          </div>
+                          <div className="document">
+                            <p>www.etail.com.tr</p>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+                <div>
+
+                  <div className="sidebar">
+
+                    <div className="sidedoc">
+
+
+
+                    </div>
+
+                  </div>
+
+                  <div style={baslikStili}>
+                    <h3>Opencart site geliştirme</h3>
+                    <p>Etail Market</p>
+                    <img src="./static/13html.png" alt="Slide 1" />
+                  </div>
+
+                  <div className="sidebar">
+
+                    <div className="sidedoc">
+
+                      <div className="flex-container">
+                        <div className="flex-item">
+                          <h3>Proje adı:</h3>
+                          <p>Etail Market</p>
+                        </div>
+                        <div className="flex-item">
+                          <h3>Yazılım Teknolojisi:</h3>
+                          <div className="div">
+                            <img src="./asset/logo/opencart.png" alt="Icon 1" />
+                          </div>
+                          <div className="document">
+                            <p>Opencart</p>
+                          </div>
+                        </div>
+                        <div className="flex-item">
+                          <h3>Web adresi:</h3>
+                          <div className="div">
+                            <img src="./asset/img/globe.png" alt="Icon 1" />
+                          </div>
+                          <div className="document">
+                            <p>www.etail.market</p>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+                <div>
+
+                  <div className="sidebar">
+
+                    <div className="sidedoc">
+
+
+
+                    </div>
+
+                  </div>
+
+                  <div style={baslikStili}>
+                    <h3>Arayüz bileşen uygulamaları</h3>
+                    <p>Coin Modules</p>
+                    <img src="./static/12html.png" alt="Slide 1" />
+                  </div>
+
+                  <div className="sidebar">
+
+                    <div className="sidedoc">
+
+                      <div className="flex-container">
+                        <div className="flex-item">
+                          <h3>Proje adı:</h3>
+                          <p>Coin Modules</p>
+                        </div>
+                        <div className="flex-item">
+                          <h3>Yazılım Teknolojisi:</h3>
+                          <div className="div">
+                            <img src="./asset/logo/php.png" alt="Icon 1" />
+                          </div>
+                          <div className="document">
+                            <p>Php</p>
+                          </div>
+                        </div>
+                        <div className="flex-item">
+                          <h3>Web adresi:</h3>
+                          <div className="div">
+                            <img src="./asset/img/globe.png" alt="Icon 1" />
+                          </div>
+                          <div className="document">
+                            <p></p>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+                <div>
+
+                  <div className="sidebar">
+
+                    <div className="sidedoc">
+
+
+
+                    </div>
+
+                  </div>
+
+                  <div style={baslikStili}>
+                    <h3>Arayüz tasarımı</h3>
+                    <p>Fermanoglu Grup</p>
+                    <img src="./static/11html.png" alt="Slide 1" />
+                  </div>
+
+                  <div className="sidebar">
+
+                    <div className="sidedoc">
+
+                      <div className="flex-container">
+                        <div className="flex-item">
+                          <h3>Proje adı:</h3>
+                          <p>Fermanoglu Grup</p>
+                        </div>
+                        <div className="flex-item">
+                          <h3>Yazılım Teknolojisi:</h3>
+                          <div className="div">
+                            <img src="./asset/logo/php.png" alt="Icon 1" />
+                          </div>
+                          <div className="document">
+                            <p>Php</p>
+                          </div>
+                        </div>
+                        <div className="flex-item">
+                          <h3>Web adresi:</h3>
+                          <div className="div">
+                            <img src="./asset/img/globe.png" alt="Icon 1" />
+                          </div>
+                          <div className="document">
+                            <p></p>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+                <div>
+
+                  <div className="sidebar">
+
+                    <div className="sidedoc">
+
+
+
+                    </div>
+
+                  </div>
+
+                  <div style={baslikStili}>
+                    <h3>Slider tasarımı</h3>
+                    <p>Birbölüiki Bilişim</p>
+                    <img src="./static/10html.png" alt="Slide 1" />
+                  </div>
+
+                  <div className="sidebar">
+
+                    <div className="sidedoc">
+
+                      <div className="flex-container">
+                        <div className="flex-item">
+                          <h3>Proje adı:</h3>
+                          <p>Birbölüiki Bilişim</p>
+                        </div>
+                        <div className="flex-item">
+                          <h3>Yazılım Teknolojisi:</h3>
+                          <div className="div">
+                            <img src="./asset/logo/coding.png" alt="Icon 1" />
+                          </div>
+                          <div className="document">
+                            <p>Html, Css, Js</p>
+                          </div>
+                        </div>
+                        <div className="flex-item">
+                          <h3>Web adresi:</h3>
+                          <div className="div">
+                            <img src="./asset/img/globe.png" alt="Icon 1" />
+                          </div>
+                          <div className="document">
+                            <p></p>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+                <div>
+
+                  <div className="sidebar">
+
+                    <div className="sidedoc">
+
+
+
+                    </div>
+
+                  </div>
+
+                  <div style={baslikStili}>
+                    <h3>Slider tasarımı</h3>
+                    <p>Birbölüiki Bilişim</p>
+                    <img src="./static/09html.png" alt="Slide 1" />
+                  </div>
+
+                  <div className="sidebar">
+
+                    <div className="sidedoc">
+
+                      <div className="flex-container">
+                        <div className="flex-item">
+                          <h3>Proje adı:</h3>
+                          <p>Birbölüiki Bilişim</p>
+                        </div>
+                        <div className="flex-item">
+                          <h3>Yazılım Teknolojisi:</h3>
+                          <div className="div">
+                            <img src="./asset/logo/coding.png" alt="Icon 1" />
+                          </div>
+                          <div className="document">
+                            <p>Html, Css, Js</p>
+                          </div>
+                        </div>
+                        <div className="flex-item">
+                          <h3>Web adresi:</h3>
+                          <div className="div">
+                            <img src="./asset/img/globe.png" alt="Icon 1" />
+                          </div>
+                          <div className="document">
+                            <p></p>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+                <div>
+
+                  <div className="sidebar">
+
+                    <div className="sidedoc">
+
+
+
+                    </div>
+
+                  </div>
+
+                  <div style={baslikStili}>
+                    <h3>WordPress site hızı optimizasyonu</h3>
+                    <p>Marin Spa</p>
+                    <img src="./static/08html.png" alt="Slide 1" />
+                  </div>
+
+                  <div className="sidebar">
+
+                    <div className="sidedoc">
+
+                      <div className="flex-container">
+                        <div className="flex-item">
+                          <h3>Proje adı:</h3>
+                          <p>Marin Spa</p>
+                        </div>
+                        <div className="flex-item">
+                          <h3>Yazılım Teknolojisi:</h3>
+                          <div className="div">
+                            <img src="./asset/logo/wordpress.png" alt="Icon 1" />
+                          </div>
+                          <div className="document">
+                            <p>WordPress</p>
+                          </div>
+                        </div>
+                        <div className="flex-item">
+                          <h3>Web adresi:</h3>
+                          <div className="div">
+                            <img src="./asset/img/globe.png" alt="Icon 1" />
+                          </div>
+                          <div className="document">
+                            <p>www.marinspa.com.tr</p>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+                <div>
+
+                  <div className="sidebar">
+
+                    <div className="sidedoc">
+
+
+
+                    </div>
+
+                  </div>
+
+                  <div style={baslikStili}>
+                    <h3>Sosyal medya katalog entegrasyonu</h3>
+                    <p>Ay Mücevher</p>
+                    <img src="./static/07html.png" alt="Slide 1" />
+                  </div>
+
+                  <div className="sidebar">
+
+                    <div className="sidedoc">
+
+                      <div className="flex-container">
+                        <div className="flex-item">
+                          <h3>Proje adı:</h3>
+                          <p>Ay Mücevher</p>
+                        </div>
+                        <div className="flex-item">
+                          <h3>Yazılım Teknolojisi:</h3>
+                          <div className="div">
+                            <img src="./asset/logo/wordpress.png" alt="Icon 1" />
+                          </div>
+                          <div className="document">
+                            <p>WordPress</p>
+                          </div>
+                        </div>
+                        <div className="flex-item">
+                          <h3>Web adresi:</h3>
+                          <div className="div">
+                            <img src="./asset/img/globe.png" alt="Icon 1" />
+                          </div>
+                          <div className="document">
+                            <p>www.aymucevher.com</p>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+                <div>
+
+                  <div className="sidebar">
+
+                    <div className="sidedoc">
+
+
+
+                    </div>
+
+                  </div>
+
+                  <div style={baslikStili}>
+                    <h3>Google haritalar kurulumu</h3>
+                    <p>Gamador Assist</p>
+                    <img src="./static/06html.png" alt="Slide 1" />
+                  </div>
+
+                  <div className="sidebar">
+
+                    <div className="sidedoc">
+
+                      <div className="flex-container">
+                        <div className="flex-item">
+                          <h3>Proje adı:</h3>
+                          <p>Gamador Assist</p>
+                        </div>
+                        <div className="flex-item">
+                          <h3>Yazılım Teknolojisi:</h3>
+                          <div className="div">
+                            <img src="./asset/logo/wordpress.png" alt="Icon 1" />
+                          </div>
+                          <div className="document">
+                            <p>WordPress</p>
+                          </div>
+                        </div>
+                        <div className="flex-item">
+                          <h3>Web adresi:</h3>
+                          <div className="div">
+                            <img src="./asset/img/globe.png" alt="Icon 1" />
+                          </div>
+                          <div className="document">
+                            <p>www.gamadorassist.com</p>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+                <div>
+
+                  <div className="sidebar">
+
+                    <div className="sidedoc">
+
+
+
+                    </div>
+
+                  </div>
+
+                  <div style={baslikStili}>
+                    <h3>Google haritalar kurulumu</h3>
+                    <p>Mas Rent A Car</p>
+                    <img src="./static/05html.png" alt="Slide 1" />
+                  </div>
+
+                  <div className="sidebar">
+
+                    <div className="sidedoc">
+
+                      <div className="flex-container">
+                        <div className="flex-item">
+                          <h3>Proje adı:</h3>
+                          <p>Mas Rent A Car</p>
+                        </div>
+                        <div className="flex-item">
+                          <h3>Yazılım Teknolojisi:</h3>
+                          <div className="div">
+                            <img src="./asset/logo/wordpress.png" alt="Icon 1" />
+                          </div>
+                          <div className="document">
+                            <p>WordPress</p>
+                          </div>
+                        </div>
+                        <div className="flex-item">
+                          <h3>Web adresi:</h3>
+                          <div className="div">
+                            <img src="./asset/img/globe.png" alt="Icon 1" />
+                          </div>
+                          <div className="document">
+                            <p>www.masarackiralama.com</p>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+                <div>
+
+                  <div className="sidebar">
+
+                    <div className="sidedoc">
+
+
+
+                    </div>
+
+                  </div>
+
+                  <div style={baslikStili}>
+                    <h3>Tema ve eklentilerde ileri düzeyde css</h3>
+                    <p>Plotter Sarf</p>
+                    <img src="./static/04html.png" alt="Slide 1" />
+                  </div>
+
+                  <div className="sidebar">
+
+                    <div className="sidedoc">
+
+                      <div className="flex-container">
+                        <div className="flex-item">
+                          <h3>Proje adı:</h3>
+                          <p>Plotter Sarf</p>
+                        </div>
+                        <div className="flex-item">
+                          <h3>Yazılım Teknolojisi:</h3>
+                          <div className="div">
+                            <img src="./asset/logo/php.png" alt="Icon 1" />
+                          </div>
+                          <div className="document">
+                            <p>Php</p>
+                          </div>
+                        </div>
+                        <div className="flex-item">
+                          <h3>Web adresi:</h3>
+                          <div className="div">
+                            <img src="./asset/img/globe.png" alt="Icon 1" />
+                          </div>
+                          <div className="document">
+                            <p>www.plottersarf.com/omer</p>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+                <div>
+
+                  <div className="sidebar">
+
+                    <div className="sidedoc">
+
+
+
+                    </div>
+
+                  </div>
+
+                  <div style={baslikStili}>
+                    <h3>Görsel tasarım ve şablon düzenlemeleri</h3>
+                    <p>Design Köln</p>
+                    <img src="./static/03html.png" alt="Slide 1" />
+                  </div>
+
+                  <div className="sidebar">
+
+                    <div className="sidedoc">
+
+                      <div className="flex-container">
+                        <div className="flex-item">
+                          <h3>Proje adı:</h3>
+                          <p>Design Köln</p>
+                        </div>
+                        <div className="flex-item">
+                          <h3>Yazılım Teknolojisi:</h3>
+                          <div className="div">
+                            <img src="./asset/logo/wordpress.png" alt="Icon 1" />
+                          </div>
+                          <div className="document">
+                            <p>WordPress</p>
+                          </div>
+                        </div>
+                        <div className="flex-item">
+                          <h3>Web adresi:</h3>
+                          <div className="div">
+                            <img src="./asset/img/globe.png" alt="Icon 1" />
+                          </div>
+                          <div className="document">
+                            <p>www.designkoln.com</p>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+                <div>
+
+                  <div className="sidebar">
+
+                    <div className="sidedoc">
+
+
+
+                    </div>
+
+                  </div>
+
+                  <div style={baslikStili}>
+                    <h3>Kurumsal site geliştirme</h3>
+                    <p>Fermanoglu Grup</p>
+                    <img src="./static/02html.png" alt="Slide 1" />
+                  </div>
+
+                  <div className="sidebar">
+
+                    <div className="sidedoc">
+
+                      <div className="flex-container">
+                        <div className="flex-item">
+                          <h3>Proje adı:</h3>
+                          <p>Fermanoglu Grup</p>
+                        </div>
+                        <div className="flex-item">
+                          <h3>Yazılım Teknolojisi:</h3>
+                          <div className="div">
+                            <img src="./asset/logo/php.png" alt="Icon 1" />
+                          </div>
+                          <div className="document">
+                            <p>Php</p>
+                          </div>
+                        </div>
+                        <div className="flex-item">
+                          <h3>Web adresi:</h3>
+                          <div className="div">
+                            <img src="./asset/img/globe.png" alt="Icon 1" />
+                          </div>
+                          <div className="document">
+                            <p></p>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+                <div>
+
+                  <div className="sidebar">
+
+                    <div className="sidedoc">
+
+
+
+                    </div>
+
+                  </div>
+
+                  <div style={baslikStili}>
+                    <h3>Kurumsal site geliştirme</h3>
+                    <p>Fermanoglu Grup</p>
+                    <img src="./static/01html.png" alt="Slide 1" />
+                  </div>
+
+                  <div className="sidebar">
+
+                    <div className="sidedoc">
+
+                      <div className="flex-container">
+                        <div className="flex-item">
+                          <h3>Proje adı:</h3>
+                          <p>Fermanoglu Grup</p>
+                        </div>
+                        <div className="flex-item">
+                          <h3>Yazılım Teknolojisi:</h3>
+                          <div className="div">
+                            <img src="./asset/logo/php.png" alt="Icon 1" />
+                          </div>
+                          <div className="document">
+                            <p>Php</p>
+                          </div>
+                        </div>
+                        <div className="flex-item">
+                          <h3>Web adresi:</h3>
+                          <div className="div">
+                            <img src="./asset/img/globe.png" alt="Icon 1" />
+                          </div>
+                          <div className="document">
+                            <p></p>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+
                 </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
               </div>
-
-
-
-
             </div>
-
           </div>
 
 
