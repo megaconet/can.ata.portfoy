@@ -114,25 +114,3 @@ nav li:hover {
 }
 
 
-/* Add some basic styling to the navbar */
-.main nav {
-  display: table;
-  width: 100%;
-  height: 100vh;
-}
-
-/* Add some basic styling to the navbar */
-.main nav ul {
-  height: 100vh;
-  border-spacing: 0px;
-}
-
-/* Style the navigation links */
-.main nav li {
-  height: 100vh;
-  display: table-cell;
-  vertical-align: middle;
-  color: #f2f2f2;
-  border: 2px solid #cbcbcb;
-  text-decoration: none;
-}
