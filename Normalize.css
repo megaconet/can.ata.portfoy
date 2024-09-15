@@ -22,19 +22,6 @@
         margin-left: 15%;
     }
 
-    .sidebar {
-        width: 15%;
-        height: auto;
-        position: relative;
-        float: left;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
-        border-radius: 12px;
-        z-index: 1000;
-    }
-
     .logo {
         width: 15%;
         height: 16vh;
@@ -78,20 +65,7 @@
         touch-action: manipulation;
         margin-left: 15%;
     }
-
-    .sidebar {
-        width: 15%;
-        height: auto;
-        position: relative;
-        float: left;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
-        border-radius: 12px;
-        z-index: 1000;
-    }
-
+    
     .logo {
         width: 90%;
         height: 16vh;
