@@ -19,6 +19,7 @@
         opacity: 100%;
         -webkit-user-select: none;
         touch-action: manipulation;
+        margin-left: 15%;
     }
 
     .sidebar {
@@ -92,6 +93,7 @@
         opacity: 100%;
         -webkit-user-select: none;
         touch-action: manipulation;
+        margin-left: 15%;
     }
 
     .sidebar {
