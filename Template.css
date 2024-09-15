@@ -1,4 +1,3 @@
-
 /*
  * Main Tables
  */
@@ -61,35 +60,23 @@
  */
 
 .sidedoc .flex-container {
-    position: relative;
-    float: left;
-    width: 100%;
-    display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    padding: 20px;
-    background: linear-gradient(135deg, #6dd5ed, #2193b0);
-    border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
 }
 
-.sidedoc .flex-item {
+.sidedoc .flex-container .flex-item {
+    flex: 1;
     height: 100%;
-    border: 1px solid #dee2e6;
+    padding-bottom: 0rem;
     text-align: center;
-    margin: 5px;
-    background: white;
-    border-radius: 15px;
-    padding: 20px;
-    text-align: center;
-    width: 95%;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    margin: 10px;
 }
 
-.sidedoc .flex-item:hover {
-    transform: scale(1.1);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-    background-color: #e0f7fa;
+.sidedoc .flex-container .flex-item:after {
+    content: "";
+    display: table;
+    clear: both;
+    position: relative;
+    margin: 0 auto;
 }
 
 
