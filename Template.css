@@ -149,6 +149,32 @@
  * Component
  */
 
+.div {
+    float: left;
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.div img {
+    max-width: 500px;
+    max-height: 500px;
+    background-repeat: no-repeat;
+}
+
+.document {
+    float: left;
+    width: 70%;
+    height: auto;
+    display: flex;
+    /*align-items: center; kullanarak içerikleri dikey eksende ortalayın.*/
+    justify-content: center;
+    /*justify-content: center; kullanarak içerikleri yatay eksende ortalayın.*/
+    align-items: center;
+    padding: 10% 0%;
+}
 
 .card-body {
     padding: 1rem;
