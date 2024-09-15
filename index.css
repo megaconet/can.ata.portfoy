@@ -27,6 +27,11 @@
   float: left;
   width: 100%;
   height: 16vh;
+  padding: 10px;
+  background-image: url('asset/img/unionx.png');
+  background-size: 26% 80%;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 /* Left doc */
