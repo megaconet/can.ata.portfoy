@@ -22,23 +22,6 @@
         margin-left: 15%;
     }
 
-    .logo {
-        width: 15%;
-        height: 16vh;
-        float: left;
-        margin-left: 5%;
-        position: absolute;
-    }
-
-    .footer {
-        width: 65%;
-        height: 16vh;
-        float: right;
-        position: relative;
-        margin-right: 5%;
-        border-radius: 1vw;
-    }
-
 }
 
 /* Ekran boyutuna göre düzenlemeler */
@@ -64,23 +47,6 @@
         -webkit-user-select: none;
         touch-action: manipulation;
         margin-left: 15%;
-    }
-    
-    .logo {
-        width: 90%;
-        height: 16vh;
-        float: left;
-        margin-left: 5%;
-        position: absolute;
-    }
-
-    .footer {
-        width: 100%;
-        height: 16vh;
-        float: right;
-        position: relative;
-        margin-right: 5%;
-        border-radius: 1vw;
     }
 
 }
