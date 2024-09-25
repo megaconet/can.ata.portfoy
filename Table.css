@@ -16,7 +16,7 @@
 }
 
 /* Ekran boyutuna göre düzenlemeler */
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 854px) {
 
     /* Sub doc */
     .grid.expanded {
@@ -32,7 +32,7 @@
 }
 
 /* Ekran boyutuna göre düzenlemeler */
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 854px) {
 
     /* Sub doc */
     .grid.expanded {
