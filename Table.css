@@ -23,6 +23,12 @@
         grid-template-columns: 1fr;
     }
 
+    .center {
+        position: relative;
+        float: left;
+        width: 70%;
+    }
+
 }
 
 /* Ekran boyutuna göre düzenlemeler */
@@ -31,6 +37,12 @@
     /* Sub doc */
     .grid.expanded {
         grid-template-columns: 1fr;
+    }
+
+    .center {
+        position: relative;
+        float: left;
+        width: 100%;
     }
 
 }
