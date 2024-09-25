@@ -1,5 +1,5 @@
 /* Ekran boyutuna göre düzenlemeler */
-@media screen and (min-width: 854px) {
+@media screen and (min-width: 1280px) {
 
     /* Middle doc */
     .middledoc {
@@ -23,7 +23,7 @@
 }
 
 /* Ekran boyutuna göre düzenlemeler */
-@media only screen and (max-width: 854px) {
+@media only screen and (max-width: 1280px) {
 
     /* Middle doc */
     .middledoc {
