@@ -40,15 +40,93 @@
 
 
   <script type="text/babel">
-    const { useEffect } = React;
+    const { useState, useEffect } = React;
+
+
+
+
+
+    function KullaniciModuluGelistirme() {
+      return (
+        <>
+          <div className="component" style={{ marginTop: '100px', justifyContent: "start" }}>
+            <div className="box" style={{ height: "100%", paddingBottom: "0", borderRadius: "0", border: "none" }}>
+              <div className="tax" style={{ background: '#FFFFFF', }}>
+                <img src="./asset/icon/right.png" alt="Icon 1" />
+                <h3>Proje #1</h3>
+              </div>
+              <img className="boxcover" src="./asset/img/pexels.jpg" alt="Icon 1" />
+            </div>
+            <div className="box" style={{ height: "100%", paddingBottom: "0", borderRadius: "0", border: "none" }}>
+              <div className="tax" style={{ background: '#FFFFFF', }}>
+                <img src="./asset/icon/right.png" alt="Icon 1" />
+                <h3>Proje #2</h3>
+              </div>
+              <img className="boxcover" src="./asset/img/pexels.jpg" alt="Icon 1" />
+            </div>
+          </div>
+        </>
+      );
+    }
+
+    function EklentiGelistirme() {
+      return (
+        <>
+          <div className="component" style={{ marginTop: '100px', justifyContent: "start" }}>
+            <div className="box" style={{ height: "100%", paddingBottom: "0", borderRadius: "0", border: "none" }}>
+              <div className="tax" style={{ background: '#FFFFFF', }}>
+                <img src="./asset/icon/right.png" alt="Icon 1" />
+                <h3>WordPress</h3>
+              </div>
+              <img className="boxcover" src="./asset/logo/wordpress.png" alt="Icon 1" />
+            </div>
+          </div>
+        </>
+      );
+    }
+
+
+
+
+
+
+
 
     const konuStili = {
       background: 'none',
       backgroundColor: 'beige',
     };
+    const pagesMap = {
+      kullanicimodulugelistirme: KullaniciModuluGelistirme,
+      eklentigelistirme: EklentiGelistirme,
+    };
 
     function CustomFunction() {
+      const [page, setPage] = useState('kullanicimodulugelistirme');
+      const [activeSubmenu, setActiveSubmenu] = useState(null);
 
+      const menuItems = [
+        {
+          name: 'Kullanıcı Modülü',
+          submenu: [
+            {
+              name: 'Kullanıcı Modülü',
+              onclick: () => setPage('kullanicimodulugelistirme'),
+            },
+          ],
+        },
+        {
+          name: 'Eklenti Geliştirme',
+          submenu: [
+            {
+              name: 'Eklenti Geliştirme',
+              onclick: () => setPage('eklentigelistirme'),
+            },
+          ],
+        },
+      ];
+
+      const SelectedPage = pagesMap[page];
 
 
       useEffect(() => {
@@ -108,6 +186,51 @@
             </div>
 
           </div>
+
+
+
+          <div className="blogger" style={{ width: '70%', height: '100%', margin: '5% 15%', background: '#f8f8f8', boxShadow: '0px 0px 10px rgba(220, 220, 220, 1)', borderRadius: '10px' }}>
+            <div className="doc">
+              {activeSubmenu &&
+                activeSubmenu.map((subitem) => (
+                  <div className="tax" key={subitem.name}>
+                    <a
+                      onClick={() => {
+                        subitem.onclick();
+                      }}
+                    >
+                      {subitem.name}
+                    </a>
+                  </div>
+                ))}
+
+              <SelectedPage />
+
+            </div>
+
+            <div className="rightdoc">
+              {menuItems.map((item, index) => (
+                <div className="tax" style={{ backgroundColor: '#8F91CE' }} key={index}>
+                  <img src="./asset/icon/right.png" alt="Icon" />
+                  <a onClick={() => setActiveSubmenu(item.submenu)}>
+                    {item.name}
+                  </a>
+                </div>
+              ))}
+            </div>
+
+
+
+
+          </div>
+
+
+
+
+
+
+
+
 
 
 
@@ -1314,6 +1437,44 @@
 
 
 
+
+          <div className="blogger" style={{ width: '70%', height: "100%", margin: '5% 15%', background: '#f8f8f8', boxShadow: '0px 0px 10px rgba(220, 220, 220, 1)', borderRadius: '10px' }}>
+
+
+            <div className="component">
+              <div className="box" style={{ height: "100%", paddingBottom: "0", borderRadius: "0", border: "none" }}>
+                <div className="tax" style={{ background: '#FFFFFF', }}>
+                  <img src="./asset/icon/right.png" alt="Icon 1" />
+                  <h3>Proje #1</h3>
+                </div>
+                <img className="boxcover" src="./asset/img/pexels.jpg" alt="Icon 1" />
+              </div>
+              <div className="box" style={{ height: "100%", paddingBottom: "0", borderRadius: "0", border: "none" }}>
+                <div className="tax" style={{ background: '#FFFFFF', }}>
+                  <img src="./asset/icon/right.png" alt="Icon 1" />
+                  <h3>Proje #2</h3>
+                </div>
+                <img className="boxcover" src="./asset/img/pexels.jpg" alt="Icon 1" />
+              </div>
+              <div className="box" style={{ height: "100%", paddingBottom: "0", borderRadius: "0", border: "none" }}>
+                <div className="tax" style={{ background: '#FFFFFF', }}>
+                  <img src="./asset/icon/right.png" alt="Icon 1" />
+                  <h3>Proje #3</h3>
+                </div>
+                <img className="boxcover" src="./asset/img/pexels.jpg" alt="Icon 1" />
+              </div>
+              <div className="box" style={{ height: "100%", paddingBottom: "0", borderRadius: "0", border: "none" }}>
+                <div className="tax" style={{ background: '#FFFFFF', }}>
+                  <img src="./asset/icon/right.png" alt="Icon 1" />
+                  <h3>Proje #4</h3>
+                </div>
+                <img className="boxcover" src="./asset/img/pexels.jpg" alt="Icon 1" />
+              </div>
+            </div>
+
+          </div>
+
+
           <div className="leftdoc">
 
             <div className="flex-container">
@@ -1326,20 +1487,32 @@
             </div>
 
             <div className="component">
-              <div className="tax">
-                <img src="./asset/img/graduation-cap.png" alt="Icon 1" />
+              <div className="box" style={{ borderRadius: '0', }}>
+                <div className="tax">
+                  <img src="./asset/img/graduation-cap.png" alt="Icon 1" />
+                  <h3>Üniversite</h3>
+                </div>
                 <p>Anadolu Üniversitesi Eylül 2021.</p>
               </div>
-              <div className="tax">
-                <img src="./asset/img/user.png" alt="Icon 1" />
+              <div className="box" style={{ borderRadius: '0', }}>
+                <div className="tax">
+                  <img src="./asset/img/user.png" alt="Icon 1" />
+                  <h3>Bölüm</h3>
+                </div>
                 <p>Bilgisayar Teknolojileri Bölümü,<br /> Web Tasarımı ve Kodlama Ön Lisans</p>
               </div>
-              <div className="tax">
-                <img src="./asset/img/envelope.png" alt="Icon 1" />
+              <div className="box" style={{ borderRadius: '0', }}>
+                <div className="tax">
+                  <img src="./asset/img/envelope.png" alt="Icon 1" />
+                  <h3>E-Posta</h3>
+                </div>
                 <p>canata09074@gmail.com</p>
               </div>
-              <div className="tax">
-                <img src="./asset/img/phone.png" alt="Icon 1" />
+              <div className="box" style={{ borderRadius: '0', }}>
+                <div className="tax">
+                  <img src="./asset/img/phone.png" alt="Icon 1" />
+                  <h3>Telefon</h3>
+                </div>
                 <p>+90 552 658 05 62</p>
               </div>
             </div>
