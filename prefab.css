@@ -60,6 +60,7 @@
     margin: 0%;
     padding: 0%;
     border-radius: 0px;
+    border: none;
 }
 
 
@@ -84,7 +85,7 @@
     align-items: center;
     width: 60%;
     height: 50px;
-    border-left: 1px solid #000;
+    border-left: 1px solid #dee2e6;
     font-size: 18px;
     color: #555;
     padding: 0% 10%;
@@ -97,7 +98,7 @@
     align-items: center;
     width: 80%;
     height: 50px;
-    border-left: 1px solid #000;
+    border-left: 1px solid #dee2e6;
     font-size: 18px;
     color: #555;
     padding: 0% 10%;
