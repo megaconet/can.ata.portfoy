@@ -182,21 +182,14 @@
 }
 
 
+
 /* Ekran boyutuna göre düzenlemeler */
 @media screen and (min-width: 1280px) {
+
     .component {
         display: flex;
         flex-direction: row;
         justify-content: space-around;
-    }
-
-    .tax {
-        width: 23%;
-        height: 120px;
-        border: 2.8px solid #000;
-        border-radius: 0.15rem;
-        text-align: left;
-        margin: 10px;
     }
 
 }
@@ -209,45 +202,9 @@
         justify-content: space-around;
     }
 
-    .tax {
-        width: 92%;
-        height: 120px;
-        border: 2.8px solid #000;
-        border-radius: 0.15rem;
-        text-align: left;
-        margin: 10px;
-    }
-
 }
 
 
-.tax:after {
-    content: "";
-    display: table;
-    clear: both;
-    position: relative;
-    margin: 0 auto;
-}
-
-.tax p {
-    float: left;
-    display: flex;
-    align-items: center;
-    width: 70%;
-    height: 120px;
-    border-left: 1px solid #000;
-    font-size: 18px;
-    color: #555;
-    padding: 0% 10%;
-}
-
-.tax img {
-    float: left;
-    width: 10%;
-    height: 30px;
-    margin: 43px 2%;
-    border-radius: 10px;
-}
 
 .title,
 .subtitle,
@@ -266,70 +223,3 @@
 }
 
 
-/* Ekran boyutuna göre düzenlemeler */
-@media screen and (min-width: 1280px) {
-    .component {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-    }
-
-    .box {
-        width: 23%;
-        height: auto;
-        background-color: #fff;
-        border: 1px solid #dee2e6;
-        border-radius: 1rem;
-        padding-bottom: 1rem;
-        text-align: left;
-        margin: 10px;
-    }
-
-}
-
-/* Ekran boyutuna göre düzenlemeler */
-@media only screen and (max-width: 1280px) {
-    .component {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-    }
-
-    .box {
-        width: 92%;
-        height: auto;
-        background-color: #fff;
-        border: 1px solid #dee2e6;
-        border-radius: 1rem;
-        padding-bottom: 1rem;
-        text-align: left;
-        margin: 10px;
-    }
-
-}
-
-
-
-
-
-
-.box img {
-    width: 50px;
-    height: 50px;
-    margin: 10%;
-    padding: 2%;
-    border: 1px solid #dee2e6;
-    border-radius: 10px;
-}
-
-.box h3 {
-    font-size: 18px;
-    color: #2193b0;
-    margin-bottom: 10px;
-}
-
-.box p {
-    font-size: 18px;
-    color: #555;
-    padding: 0% 10%;
-}
