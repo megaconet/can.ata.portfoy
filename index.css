@@ -57,6 +57,38 @@
 }
 
 
+/* Doc */
+.doc {
+  display: block;
+  width: 80%;
+  position: relative;
+  float: left;
+  height: 100%;
+  z-index: 998;
+}
+
+
+
+/* Right doc */
+.rightdoc {
+  width: 20%;
+  float: left;
+  height: auto;
+  z-index: 998;
+  position: relative;
+}
+
+
+/* Left doc */
+.leftdoc {
+  float: right;
+  width: 100%;
+  height: auto;
+  padding: 0% 15%;
+  background: linear-gradient(0deg, rgba(255, 255, 255, 1), rgba(236, 242, 254, 255));
+}
+
+
 /* Left doc */
 .leftdoc {
   float: right;
