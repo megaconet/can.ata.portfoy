@@ -49,7 +49,7 @@
     function KullaniciModuluGelistirme() {
       return (
         <>
-          <div className="component" style={{ marginTop: '100px', justifyContent: "start" }}>
+          <div className="component" style={{ justifyContent: "start" }}>
             <div className="box" style={{ height: "100%", paddingBottom: "0", borderRadius: "0", border: "none" }}>
               <div className="tax" style={{ background: '#FFFFFF', }}>
                 <img src="./asset/icon/right.png" alt="Icon 1" />
@@ -72,7 +72,7 @@
     function EklentiGelistirme() {
       return (
         <>
-          <div className="component" style={{ marginTop: '100px', justifyContent: "start" }}>
+          <div className="component" style={{ justifyContent: "start" }}>
             <div className="box" style={{ height: "100%", paddingBottom: "0", borderRadius: "0", border: "none" }}>
               <div className="tax" style={{ background: '#FFFFFF', }}>
                 <img src="./asset/icon/right.png" alt="Icon 1" />
@@ -191,6 +191,12 @@
 
           <div className="blogger" style={{ width: '70%', height: '100%', margin: '5% 15%', background: '#f8f8f8', boxShadow: '0px 0px 10px rgba(220, 220, 220, 1)', borderRadius: '10px' }}>
             <div className="doc">
+
+
+              <div class="tax"><a> </a></div>
+
+
+
               {activeSubmenu &&
                 activeSubmenu.map((subitem) => (
                   <div className="tax" key={subitem.name}>
