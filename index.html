@@ -220,8 +220,7 @@
 
             <div className="rightdoc">
               {menuItems.map((item, index) => (
-                <div className="tax" style={{ backgroundColor: '#8F91CE' }} key={index}>
-                  <img src="./asset/icon/right.png" alt="Icon" />
+                <div className="tax" style={{ backgroundColor: '#FFFFFF', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.4)', border: '1px solid lightgray', borderRadius: '10px' }} key={index}>
                   <a onClick={() => setActiveSubmenu(item.submenu)}>
                     {item.name}
                   </a>
