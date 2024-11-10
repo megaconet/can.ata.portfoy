@@ -204,7 +204,7 @@
 
               {activeSubmenu &&
                 activeSubmenu.map((subitem) => (
-                  <div className="tax" key={subitem.name}>
+                  <div className="tax" style={{ cursor: 'pointer' }} key={subitem.name}>
                     <a
                       onClick={() => {
                         subitem.onclick();
