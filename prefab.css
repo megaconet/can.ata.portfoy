@@ -77,6 +77,7 @@
     height: 50px;
     background-color: #E3DEFF;
     text-align: left;
+    float: left;
 }
 
 .tax a {
