@@ -1,0 +1,261 @@
+/* Form container */
+.form-container {
+    width: 400px;
+    float: right;
+    padding: 20px;
+    background-color: #f8f9fa;
+}
+
+/* Label styling */
+.form-group label {
+    display: block;
+    font-weight: 300;
+    margin-bottom: 8px;
+    color: #1f1f1f;
+    text-align: left;
+}
+
+/* Input fields */
+.form-control {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 8px;
+    border: 1px solid #ced4da;
+    border-radius: 0px;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.form-control:focus {
+    border-color: #7cd1f5;
+    /* Google-style blue */
+    box-shadow: 0 0 0 4px rgba(124, 209, 245, 0.2);
+    /* Highlight on focus */
+}
+
+/* Phone number input container */
+.phone-input {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Country code dropdown */
+.country-code {
+    background-color: #f1f3f4;
+    border: 1px solid #ccc;
+    padding: 12px;
+    border-radius: 8px;
+}
+
+/* Error message styling */
+.error-message {
+    color: #fff;
+    margin-bottom: 8px;
+    background-color: #183153;
+    padding: 12px;
+    border-radius: 8px;
+}
+
+/* Fixed error message styling */
+.fixed-error-message {
+    color: #fff;
+    margin-bottom: 8px;
+    background-color: #183153;
+    padding: 12px;
+    border-radius: 8px;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Fixed success message styling */
+.fixed-success-message {
+    color: #fff;
+    margin-bottom: 8px;
+    background-color: #9ACD32;
+    padding: 12px;
+    border-radius: 8px;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Submit button */
+.submit-button {
+    background-color: #7cd1f5;
+    /* Blue button color */
+    color: white;
+    font-weight: 600;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    border-radius: 16px;
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    background-color: #183153;
+}
+
+.submit-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Terms and conditions message */
+.terms-message {
+    color: #5f6368;
+    margin-top: 16px;
+}
+
+.terms-message a {
+    color: #1a73e8;
+    text-decoration: none;
+}
+
+.terms-message a:hover {
+    text-decoration: underline;
+}
+
+/* ReCaptcha and policy */
+.recaptcha {
+    color: #5f6368;
+    text-align: center;
+    margin-top: 12px;
+}
+
+
+
+
+/* New selectbox styling */
+.selectbox {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 8px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f1f3f4;
+    color: #1f1f1f;
+    font-size: 14px;
+    box-sizing: border-box;
+    outline: none;
+    appearance: none;
+    cursor: pointer;
+}
+
+.selectbox:focus {
+    border-color: #7cd1f5;
+    box-shadow: 0 0 0 4px rgba(221, 86, 0, 0.2);
+}
+
+/* Custom arrow for selectbox */
+.selectbox::-ms-expand {
+    display: none;
+}
+
+
+/* Checkbox styling */
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    color: #1f1f1f;
+}
+
+.checkbox-label input[type="checkbox"] {
+    margin-right: 8px;
+    accent-color: #7cd1f5;
+}
+
+/* Radio button styling */
+.radio-label {
+    display: flex;
+    align-items: center;
+    color: #1f1f1f;
+    padding: 12px;
+    margin-bottom: 8px;
+}
+
+.radio-label input[type="radio"] {
+    margin-right: 8px;
+    accent-color: #7cd1f5;
+}
+
+
+
+
+.selectbox-container {
+    position: relative;
+}
+
+.selectbox-arrow {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    font-size: 16px;
+    color: #5f6368;
+}
+
+
+
+/* Select Filter */
+.select-container {
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: flex-start;
+}
+
+.select-container input,
+.select-container select,
+.select-container label,
+.select-container .radio-group {
+    margin: 10px;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.select-container input[type="text"],
+.select-container select {
+    width: 200px;
+}
+
+.select-container .radio-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.select-container input[type="radio"] {
+    margin: 0;
+}
+
+/* Duyarlı tasarım */
+@media (max-width: 768px) {
+
+    .select-container input[type="text"],
+    .select-container select {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .select-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .select-container input[type="text"],
+    .select-container select,
+    .select-container .radio-group {
+        width: 100%;
+    }
+}

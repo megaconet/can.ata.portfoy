@@ -1,0 +1,164 @@
+/* Clear floats after the docs */
+.App:after {
+  content: "";
+  display: table;
+  clear: both;
+  position: relative;
+  margin: 0 auto;
+}
+
+/* Clear floats after the docs */
+.App {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  transition: width 2s;
+}
+
+
+
+
+
+
+
+
+
+
+.sidebar {
+  width: auto;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  z-index: 1000;
+  background-color: #fff;
+  overflow: scroll;
+}
+
+.sidebar::-webkit-scrollbar {
+  display: none;
+}
+
+.sidebar.expanded {
+  width: 100%;
+}
+
+
+
+/* dropdown-content doc */
+.dropdown-content {
+  position: relative;
+  float: left;
+  height: 100%;
+  z-index: 999;
+  background-color: #fff;
+}
+
+
+/* Ekran boyutuna göre düzenlemeler */
+@media only screen and (min-width: 768px) {
+
+  /* Side doc */
+  .sidedoc {
+    width: 20vw;
+    position: relative;
+    float: left;
+    height: 100%;
+    z-index: 999;
+    background-color: #fff;
+    border-right: 1px solid #dcdcde;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  /* to menu */
+  .tomenu {
+    display: none;
+    width: 10vw;
+    position: relative;
+    float: left;
+    height: 100%;
+    z-index: 999;
+  }
+
+  /* Sub doc */
+  .sidedoc.expanded {
+    width: 20vw;
+  }
+
+  /* Sub doc */
+  .subdoc {
+    display: block;
+    width: 80vw;
+    position: relative;
+    float: left;
+    z-index: 998;
+    background-color: #fff;
+  }
+
+}
+
+/* Ekran boyutuna göre düzenlemeler */
+@media only screen and (max-width: 768px) {
+
+  /* Side doc */
+  .sidedoc {
+    width: 70vw;
+    position: relative;
+    float: left;
+    height: 100%;
+    z-index: 999;
+    background-color: #fff;
+    border-right: 1px solid #dcdcde;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  /* to menu */
+  .tomenu {
+    width: 10vw;
+    position: relative;
+    float: left;
+    height: 100%;
+    z-index: 999;
+  }
+
+  /* Sub doc */
+  .sidedoc.expanded {
+    width: 10vw;
+  }
+
+  /* Sub doc */
+  .subdoc {
+    display: block;
+    width: 68vw;
+    position: relative;
+    float: left;
+    z-index: 998;
+    background-color: #fff;
+  }
+
+}
+
+/* Sub doc */
+.subdoc.expanded {
+  display: none;
+}
+
+
+.masked {
+  font-family: 'Abril Fatface', cursive;
+  line-height: 0.8;
+  font-size: 100px;
+  font-weight: bold;
+  background: url('https://themewagon.github.io/andrea/images/bg_1.jpg') no-repeat;
+  background-size: contain;
+  -webkit-background-clip: text;
+  color: transparent;
+}
