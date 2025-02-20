@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <title>Can Ata - Web Geliştirici Portföy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="./assets/icon/favicon-16x16.png" type="image/png" sizes="16x16">
+  <link rel="icon" href="./assets/icon/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="./assets/icon/favicon-96x96.png" type="image/png" sizes="96x96">
+  <link rel="icon" href="./assets/icon/favicon-120x120.png" type="image/png" sizes="120x120">
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="App.css">
+  <link rel="stylesheet" href="Blogger.css">
+  <link rel="stylesheet" href="Prefab.css">
+  <link rel="stylesheet" href="Standard.css">
+  <link rel="stylesheet" href="Template.css">
+  <link rel="stylesheet" href="Table.css">
+  <link rel="stylesheet" href="Slider.css">
+  <!-- Slick Carousel CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <!-- Slick Carousel JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+  <link rel="stylesheet" href="helpers/helpers.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Lora:ital,wght@0,400..700;1,400..700&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <div id="root"></div>
+
+
+
+
+
+
+
+  <script type="text/babel">
+    const { useState, useEffect } = React;
+
+    function ProjectDetail({ activeSubmenu }) {
+      const [filteredNotifications, setFilteredNotifications] = useState([]);
+
+      // Sample notifications data
+      const bildirim = [
+        { id: 1, baslik: "Serem Metal", url: "https://seremmetal.com/", content: "Teknik yapıştırıcı gibi alanlarda üretim yapan kurumsal firmanın websitesidir. Tanıtılan hizmetler Çimento esaslı sıvalar, Seramik yapıştırıcıları, Seramik derz dolguları gibi kategorilere dahildir. Kullanıcıların yapıştırıcı malzeme gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır.  ", tags: ["PHP", "HTML & CSS"], image: "assets/img/31html.png" },
+        { id: 2, baslik: "Ata Yapı Mimarlık", url: "https://atayapimimarlik.gen.tr/", content: "Mimarlık ve Mühendislik gibi alanlarda hizmet veren kurumsal firmanın websitesidir. Tanıtılan hizmetler mimarlık ve mühendislik hizmetleri gibi kategorilere dahildir. Kullanıcıların rahat yaşam gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır.  ", tags: ["WORDPRESS", "GUTENBERG BLOCKS", "NODEJS", "PHP", "HTML & CSS"], image: "assets/img/26html.png" },
+        { id: 3, baslik: "Dijital Dershanem", url: "#", content: "Üniversite öğrencilerine yönelik çevrimiçi derslerin konu anlatımını, deneme sınavlarının satışı yapılan bir e-ticaret websitesidir. Satılan çevrimiçi dersler ÖABT, KPSS Ders konuları gibi kategorilere dahildir. Öğrencilerin eğitim ve öğretim gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır.  ", tags: ["NODEJS", "REACTJS", "TAILWIND"], image: "assets/img/22html.png" },
+        { id: 4, baslik: "TUSDATA", url: "https://www.tusdata.com/", content: "Tıp öğrencilerine yönelik çevrimiçi derslerin konu anlatımını, deneme sınavlarının satışı yapılan bir e-ticaret websitesidir. Satılan çevrimiçi dersler TUS, DUS Ders konuları gibi kategorilere dahildir. Öğrencilerin eğitim ve öğretim gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır.  ", tags: ["WORDPRESS", "WORDPRESS PLUGIN", "PHP", "HTML & CSS"], image: "assets/img/18html.png" },
+        { id: 5, baslik: "Medyarella Creative", url: "https://www.aymucevher.com/", content: "Reklam prodüksiyon, Kreatif prodüksiyon ve Kamera çekimi görsel içerik üretimi alanlarında reklamcılık yapan kurumsal firmanın websitesidir. Tanıtılan hizmetler tanıtıcı reklam hizmetleri gibi kategorilere dahildir. Kullanıcıların tanıtım ve prodüksiyon gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır.  ", tags: ["WORDPRESS", "JAVASCRIPT", "HTML & CSS"], image: "assets/img/07html.png" },
+        { id: 6, baslik: "E-Tail Market", url: "https://www.etail.com.tr/", content: "Dijital oyun kartı, Bilgisayar oyunları gibi ürünlerin satışı yapılan bir e-ticaret websitesidir. Satılan ürünler tüm dijital ürünleri kategorilerini kapsamaktadır. Kullanıcıların dijital alanda eğlence gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır.  ", tags: ["OPENCART", "TWIG", "PHP", "JAVASCRIPT", "AJAX"], image: "assets/img/14html.png" },
+        { id: 7, baslik: "Coin Modules Kripto", url: "#", content: "Kripto para gibi ürünlerin satışı yapılan bir e-ticaret websitesidir. Satılan ürünler kripto para haberleri gibi kategorilere dahildir. Kullanıcıların çevrimiçi varlık gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır.  ", tags: ["PHP", "JAVASCRIPT", "HTML & CSS"], image: "assets/img/12html.png" },
+        { id: 8, baslik: "Feka Reklam", url: "#", content: "Reklam, Tabela, Ahşap Giydirme ve Mühendislik gibi alanlarda üretim yapan kurumsal firmanın websitesidir. Tanıtılan hizmetler tanıtıcı reklam hizmetleri gibi kategorilere dahildir. Kullanıcıların tanıtım ve mühendislik gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır.  ", tags: ["PHP", "JAVASCRIPT", "HTML & CSS"], image: "assets/img/11html.png" },
+        { id: 9, baslik: "Saatçioğulları Optik Market", url: "https://www.saatciogullari.com/", content: "Optik gözlük, Saat gibi ürünlerin satışı yapılan bir e-ticaret websitesidir. Satılan ürünler aksesuar koleksiyonları gibi kategorilere dahildir. Kullanıcıların aksesuar gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır.  ", tags: ["OPENCART", "MYSQL"], image: "assets/img/00html.png" },
+      ];
+
+      // Filter the notifications when activeSubmenu changes
+      useEffect(() => {
+        if (activeSubmenu && activeSubmenu.length > 0) {
+          // Get the submenu name
+          const submenuName = activeSubmenu[0]?.name;
+
+          // Filter the bildirim array based on the submenu name
+          const filtered = bildirim.filter(b => b.baslik === submenuName);
+
+          // Set the filtered notifications
+          setFilteredNotifications(filtered);
+        }
+      }, [activeSubmenu]);
+
+      useEffect(() => {
+        if (window.$) {
+          $('.carousel').slick({
+            dots: true,
+            infinite: true,
+            speed: 500,
+            slidesToShow: 1,
+            slidesToScroll: 1
+          });
+        }
+      }, []);
+
+      return (
+        <main className="middledoc" >
+
+          <div className="modules" >
+
+
+            <div className="left" style={{ float: 'left', }}>
+
+
+
+
+              <div className="container" >
+
+                <div className="component" >
+
+                  <div className="row">
+
+
+                    {filteredNotifications.length > 0 ? (
+                      filteredNotifications.map((notification, index) => (
+                        <article key={notification.id}>
+                          <h1>{notification.baslik}</h1>
+                        </article>
+                      ))
+                    ) : (
+                      <article>No informations found</article>
+                    )}
+
+                  </div>
+                  <div className="row">
+                    <div className="slider-container">
+                      <div className="carousel">
+                        {filteredNotifications.map((notification) => (
+                          <div key={notification.id}>
+                            <img src={notification.image} alt={`{notification.baslik}`} />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+              <div className="container" >
+
+                <div className="component" >
+
+                  <div className="row">
+
+                    {filteredNotifications.length > 0 ? (
+                      filteredNotifications.map(notification => (
+                        <>
+                          <article key={notification.id}>
+                            <p>{notification.content}</p>
+                          </article>
+                          <section style={{ flexDirection: 'row', }}>
+                            {notification.tags.map((tag, index) => (
+                              <span key={index}>{tag}</span>
+                            ))}
+                          </section>
+                        </>
+                      ))
+                    ) : (
+                      <article>No informations found</article>
+                    )}
+
+
+                  </div>
+
+
+
+
+                  <div className="row">
+
+
+                    {filteredNotifications.length > 0 ? (
+                      filteredNotifications.map(notification => (
+                        <>
+                          <section key={notification.id}>
+                            <a href={notification.url}>
+
+                              <div style={{ marginBottom: '20px', width: '100%', textAlign: 'left' }}>
+                                <ul style={{ listStyleType: 'none', padding: '0', margin: '0', width: '100%' }}>
+                                  <li
+                                    style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: '#f9f9f9', marginBottom: '10px', padding: '10px 15px' }}>
+                                    <img src="assets/icon/headshot.jpg" alt="Article Image" style={{ width: '100px', borderRadius: '4px' }} />
+                                    <div style={{ marginLeft: '15px', marginBottom: '15px', width: '100%' }}>
+                                      <h4 style={{ fontSize: '14px', margin: '10px 0' }}>Can Ata</h4>
+                                      <p style={{ color: '#999', fontSize: '12px' }}>Projeyi daha yakından keşfetmek için bağlantıya tıklayın. Proje sürecini ve detaylarını görmek için sizi yönlendirecek linki takip edin. Farklı bakış açıları ve ek bilgiler için projeyi incelemeye devam edin.</p>
+                                    </div>
+                                  </li>
+                                </ul>
+                              </div>
+
+                            </a>
+                          </section>
+                        </>
+                      ))
+                    ) : (
+                      <article>No informations found</article>
+                    )}
+
+
+
+                  </div>
+
+
+
+
+
+
+
+                </div>
+              </div>
+
+
+
+
+
+
+            </div>
+            <div className="right" style={{ float: 'left', backgroundColor: '#f8f9fa', }}>
+
+              <section>
+                <h3>Makaleler</h3>
+                <ul>
+                  <li>Giriş
+                    <span>(8)</span>
+                  </li>
+                  <li>Yetkinlikler
+                    <span>(6)</span>
+                  </li>
+                  <li>Kişilik
+                    <span>(2)</span>
+                  </li>
+                </ul>
+              </section>
+              <div style={{ marginBottom: '20px', width: '100%', textAlign: 'left' }}>
+                <ul style={{ listStyleType: 'none', padding: '0', margin: '0', width: '100%' }}>
+                  <li
+                    style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: '#f9f9f9', marginBottom: '10px', padding: '10px 15px' }}>
+                    <img src="assets/icon/pdf.png" alt="Article Image" style={{ width: '100px', borderRadius: '4px' }} />
+                    <div style={{ marginLeft: '15px', marginBottom: '15px', width: '100%' }}>
+                      <p style={{ color: '#999', fontSize: '12px' }}>2025</p>
+                      <h4 style={{ fontSize: '14px', margin: '10px 0' }}>Tam Özgeçmişi Görüntüle</h4>
+                    </div>
+                  </li>
+                  <li>
+                    <a href="/" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: '#f9f9f9', marginBottom: '10px', padding: '10px 15px' }}>
+                      <img src="office.png" alt="Article Image" style={{ width: '100px', borderRadius: '4px' }} />
+                      <div style={{ marginLeft: '15px', marginBottom: '15px', width: '100%' }}>
+                        <p style={{ color: '#999', fontSize: '12px' }}>2025</p>
+                        <h4 style={{ fontSize: '14px', margin: '10px 0' }}>Tam Proje Arşivini Görüntüle</h4>
+                      </div>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <section>
+                <h3>Etiket Bulutu</h3>
+              </section>
+              <section style={{ flexDirection: 'row', }}>
+                <span className="tag">NODEJS</span>
+                <span className="tag">REACTJS</span>
+                <span className="tag">VUEJS</span>
+                <span className="tag">TYPESCRIPT</span>
+                <span className="tag">TAILWIND</span>
+                <span className="tag">HTML & CSS</span>
+                <span className="tag">JAVASCRIPT</span>
+                <span className="tag">WORDPRESS</span>
+                <span className="tag">WORDPRESS PLUGIN</span>
+                <span className="tag">GUTENBERG BLOCKS</span>
+                <span className="tag">OPENCART</span>
+                <span className="tag">PHP</span>
+                <span className="tag">TWIG</span>
+                <span className="tag">AJAX</span>
+                <span className="tag">MYSQL</span>
+              </section>
+              <article>
+                <h3>Günün Sözü</h3>
+                <h4>"Başarı, en iyi hazırlananların hakkıdır." </h4>
+                <p>– Louis Pasteur</p>
+              </article>
+
+
+
+            </div>
+
+
+
+
+
+
+
+
+
+          </div>
+
+
+
+
+
+        </main>
+      );
+    };
+
+    function Experience() {
+      return (
+        <main className="middledoc">
+
+
+
+
+          <div className="container-fluid" >
+
+
+
+            {/* PROJECT */}
+            <div className="component" style={{ padding: '0% 0%', }}>
+
+              <div className="col-md">
+
+                <section>
+                  <a href="#">
+                    <h2>Frontend Geliştirici Takım Lideri</h2>
+                    <h3>Frontend Geliştirici </h3>
+                    <h4>ERHA Eğitim Basın Yayın Bilgisayar Ltd. Şti, Ankara, TÜRKİYE</h4>
+                    <p>• React.js, Redux ve NodeJS Framework ve kütüphaneleri • ES6, TypeScript ile çalışmak • HTML5, CSS3, Bootstrap, ve jQuery teknolojileri • XML, JSON, SOAP/REST Web Services ile veri işleme • Git veya benzeri sürüm kontrol sistemleri • Web standartları, UI/UX tasarımı ve Responsive site • Figma dosyalarını HTML/CSS'e dönüştürme • Çapraz Tarayıcı ortamda kod geliştirme • B2B Dashboard çözümleri tasarımı • Proje ile ilgili teknik ve görsel tasarım • Opensource CSS kütüphaneleri entegrasyonu • Frontend teknolojilerin temeli, JavaScript, AJAX, HTML5 ve CSS3</p>
+                  </a>
+                </section>
+                <section style={{ flexDirection: 'row', }}>
+                  <span class="tag">NODEJS</span>
+                  <span class="tag">REACTJS</span>
+                  <span class="tag">TAILWIND</span>
+                </section>
+
+              </div>
+              <div className="col-xs" style={{ backgroundColor: '#f8f9fa', margin: '0% 4%', }}>
+
+                <section>
+                  <ul>
+                    {/* 
+                <li><u>2024 —
+                    <span>(HALEN)</span></u>
+                </li>
+                */}
+                    <li>
+                      <u>04/2024 —  12/2024</u>
+                    </li>
+                  </ul>
+                </section>
+
+              </div>
+
+            </div>
+            {/* PROJECT */}
+            <div className="component" style={{ padding: '0% 0%', }}>
+
+              <div className="col-md">
+
+                <section>
+                  <a href="https://www.tusdata.com">
+                    <h3>İnternet Geliştirici</h3>
+                    <h4>TUSDATA Tus Sınav Hazırlık Merkezi, Ankara, TÜRKİYE</h4>
+                    <p>• HTML5, CSS3, Bootstrap, ve jQuery teknolojileri • XML, JSON, SOAP/REST Web Services ile veri işleme • Git veya benzeri sürüm kontrol sistemleri • Web standartları, UI/UX tasarımı ve Responsive site • Figma dosyalarını HTML/CSS'e dönüştürme • Çapraz Tarayıcı ortamda kod geliştirme • Microsoft Office ile Dokuman duzenleme • Navicat database ile kayıt, icerik guncelleme • DOMDocument projesinde DOMXPath kullanımı • Özel WordPress eklentileri ve temaları geliştirme • Wordpress CMS ve eklentileri uygulamaları • Panel/eklenti güncellemelerini takip edilmesi • PHP ve WordPress bilgisine sahip olmak ve site kurulumu yapabilmek, oluşan hataları çözebilmek • Frontend teknolojilerin temeli, PHP programlama, JavaScript, HTML5 ve CSS3 • Nesne yönelimli PHP programlama</p>
+                  </a>
+                </section>
+                <section style={{ flexDirection: 'row', }}>
+                  <span class="tag">WORDPRESS</span>
+                  <span class="tag">WORDPRESS PLUGIN</span>
+                  <span class="tag">PHP</span>
+                  <span class="tag">HTML & CSS</span>
+                </section>
+
+              </div>
+              <div className="col-xs" style={{ backgroundColor: '#f8f9fa', margin: '0% 4%', }}>
+
+                <section>
+                  <ul>
+                    <li>
+                      <u>11/2023 —  01/2024</u>
+                    </li>
+                  </ul>
+                </section>
+
+              </div>
+
+            </div>
+            {/* PROJECT */}
+            {/* PROJECT */}
+            <div className="component" style={{ padding: '0% 0%', }}>
+
+              <div className="col-md">
+
+                <section>
+                  <a href="https://www.aymucevher.com/">
+                    <h3>WordPress Geliştirici</h3>
+                    <h4>Medyarella Creative Reklam Ajansı, Ankara, TÜRKİYE</h4>
+                    <p>• Özel WordPress eklentileri ve temaları geliştirme • Wordpress CMS ve eklentileri uygulamaları • Bir temayı veya yapılan tasarımı sağlanan içerikler ile hayata geçirilmesi • Panel/eklenti güncellemelerini takip edilmesi • Wordpress ve site hızı optimizasyonu • E-Ticaret web siteleri oluşturmuş WooCommerce altyapısı • PHP ve WordPress bilgisine sahip olmak ve site kurulumu yapabilmek, oluşan hataları çözebilmek • Frontend teknolojilerin temeli, PHP programlama, JavaScript, React, HTML5 ve CSS3 • Nesne yönelimli PHP programlama • Cpanel, plesk panel, paylaşımlı ve WHM hosting • Domain, DNS, Mail Server konuları • MySQL ve veritabanı yönetimi • Ul/UX'in en iyi uygulamaları ve duyarlı tasarımın uygulanması • Görsel Tasarım ve şablon düzenlemeleri yapmak (CSS) • Git gibi sürüm kontrol sistemleri</p>
+                  </a>
+                </section>
+                <section style={{ flexDirection: 'row', }}>
+                  <span class="tag">WORDPRESS</span>
+                  <span class="tag">JAVASCRIPT</span>
+                  <span class="tag">HTML & CSS</span>
+                </section>
+
+              </div>
+              <div className="col-xs" style={{ backgroundColor: '#f8f9fa', margin: '0% 4%', }}>
+
+                <section>
+                  <ul>
+                    <li>
+                      <u>09/2023 —  11/2023</u>
+                    </li>
+                  </ul>
+                </section>
+
+              </div>
+
+            </div>
+            {/* PROJECT */}
+            {/* PROJECT */}
+            <div className="component" style={{ padding: '0% 0%', }}>
+
+              <div className="col-md">
+
+                <section>
+                  <a href="https://www.etail.com.tr/">
+                    <h3>Bilgisayar Programcısı</h3>
+                    <h4>5Deniz Ltd, Oyun Kodu, Hediye Kartı ve Epin Satış Platformu, Ankara, TÜRKİYE</h4>
+                    <p>• B2C ve B2B Opencart E-ticaret yazılımı geliştirme • Güvenli web uygulamalarının geliştirilmesi ve zayıf noktaları • Nesneye Yönelik Programlama deneyimi • X-Fee Pro Shipping sistemleri kurulumu • PayPal Global Seçenek İşleri • Vue.js, TypeScript ve NodeJS Framework ve kütüphaneleri • Modern Ön Uç Vue Teknolojileri • ES6, TypeScript ile çalışmak • RESTful API'ler ve arka uç hizmetleriyle entegrasyon • Duyarlı web tasarımı ilkeleri ve tarayıcılar arası uyumluluk • Görsel tasarım aracılığıyla uygulamaların ön ucu • NodeJS geliştirme deneyimi ve Mac OS • Github CI-CD metodolojilerini kullanarak çalıştı • Ölçeklenebilir, güvenilir, bakımı yapılabilir ve yeniden kullanılabilir kod • Sürekli entegrasyon akışında çözümler sunma • Prototiplerin uygulanması • Tarayıcı oluşturma ve tarayıcı animasyonu maliyetleri • Popüler JavaScript çerçevelerinde deneyimli</p>
+                  </a>
+                </section>
+                <section style={{ flexDirection: 'row', }}>
+                  <span class="tag">OPENCART</span>
+                  <span class="tag">TWIG</span>
+                  <span class="tag">PHP</span>
+                  <span class="tag">JAVASCRIPT</span>
+                  <span class="tag">AJAX</span>
+
+                </section>
+
+              </div>
+              <div className="col-xs" style={{ backgroundColor: '#f8f9fa', margin: '0% 4%', }}>
+
+                <section>
+                  <ul>
+                    <li>
+                      <u>04/2023 —  07/2023</u>
+                    </li>
+                  </ul>
+                </section>
+
+              </div>
+
+            </div>
+            {/* PROJECT */}
+            {/* PROJECT */}
+            <div className="component" style={{ padding: '0% 0%', }}>
+
+              <div className="col-md">
+
+                <section>
+                  <a href="#">
+                    <h3>Web Geliştirici</h3>
+                    <h4>Coin Modules, Kripto Paralar, Akdeniz, Mersin, TÜRKİYE</h4>
+                    <p>• React.js Framework ve kütüphaneleri • Yerleşik kripto para takip firması web sitesi ve birçok bilgilendirici ve borsaya özel web sitesi • Organik arama motoru optimizasyonu, yüksek düzeyde rekabetçi, yüksek trafikli, hedefli anahtar kelime öbekleri • Tüm yaşam döngüsü barındırma geliştirme ve bakımından yalnızca sorumluydu • Tüm web sitesi tasarımında Photoshop, XHTML ve CSS kullanıldı</p>
+                  </a>
+                </section>
+                <section style={{ flexDirection: 'row', }}>
+                  <span class="tag">PHP</span>
+                  <span class="tag">JAVASCRIPT</span>
+                  <span class="tag">HTML & CSS</span>
+                </section>
+
+              </div>
+              <div className="col-xs" style={{ backgroundColor: '#f8f9fa', margin: '0% 4%', }}>
+
+                <section>
+                  <ul>
+                    <li>
+                      <u>04/2022 —  07/2022</u>
+                    </li>
+                  </ul>
+                </section>
+
+              </div>
+
+            </div>
+            {/* PROJECT */}
+            {/* PROJECT */}
+            <div className="component" style={{ padding: '0% 0%', }}>
+
+              <div className="col-md">
+
+                <section>
+                  <a href="#">
+                    <h3>Web Tasarımcı</h3>
+                    <h4>Feka Reklam, Kurumsal Website, Akdeniz, Mersin, TÜRKİYE</h4>
+                    <p>• Kurumsal Grup şirketi web sitesi ve portföy yönetimi • Tüm yaşam döngüsü web sitesi geliştirme ve bakımından yalnızca sorumluydu • Tüm web sitesi tasarımında Photoshop, XHTML ve CSS kullanıldı • Tüm istemci tarafı komut dosyası oluşturma için JavaScript kullanıldı  • Tüm sunucu tarafı programlama için Veritabanı Sunucusu ve MSSQL'e bağlı ASP, MVC ve Core kullanıldı • Windows Sunucularındaki IIS üzerinde Apache de dahil olmak üzere Web ve FTP sunucularının yönetiminden sorumludur</p>
+                  </a>
+                </section>
+                <section style={{ flexDirection: 'row', }}>
+                  <span class="tag">PHP</span>
+                  <span class="tag">JAVASCRIPT</span>
+                  <span class="tag">HTML & CSS</span>
+                </section>
+
+              </div>
+              <div className="col-xs" style={{ backgroundColor: '#f8f9fa', margin: '0% 4%', }}>
+
+                <section>
+                  <ul>
+                    <li>
+                      <u>03/2022 —  04/2022</u>
+                    </li>
+                  </ul>
+                </section>
+
+              </div>
+
+            </div>
+            {/* PROJECT */}
+            {/* PROJECT */}
+            <div className="component" style={{ padding: '0% 0%', }}>
+
+              <div className="col-md">
+
+                <section>
+                  <a href="https://atayapimimarlik.gen.tr/">
+                    <h3>WordPress Geliştirici</h3>
+                    <h4>Ata Yapı Mimarlık, Kurumsal Website, Yenişehir, Mersin, TÜRKİYE</h4>
+                    <p>• HTML5, CSS3, JavaScript, jQuery gibi ön uç teknolojileri kullanma • Web siteleri ve/veya web uygulamaları için kullanıcı arayüzleri oluşturma • Duyarlı tasarım web siteleri geliştirmek • Site hızlandırma, Hata ayıklama araçları • Platformlar ve tarayıcılar arasında tutarlı stil sağlamak için CSS değişiklikleri • Arka uç geliştirme için güçlü PHP ve MySQL • Özel Wordpress temaları oluşturma • Çok dilli WordPress web siteleri</p>
+                  </a>
+                </section>
+                <section style={{ flexDirection: 'row', }}>
+                  <span class="tag">WORDPRESS</span>
+                  <span class="tag">GUTENBERG BLOCKS</span>
+                  <span class="tag">NODEJS</span>
+                  <span class="tag">PHP</span>
+                  <span class="tag">HTML & CSS</span>
+                </section>
+
+              </div>
+              <div className="col-xs" style={{ backgroundColor: '#f8f9fa', margin: '0% 4%', }}>
+
+                <section>
+                  <ul>
+                    <li>
+                      <u>11/2019 —  01/2020</u>
+                    </li>
+                  </ul>
+                </section>
+
+              </div>
+
+            </div>
+            {/* PROJECT */}
+            {/* PROJECT */}
+            <div className="component" style={{ padding: '0% 0%', }}>
+
+              <div className="col-md">
+
+                <section>
+                  <a href="https://www.saatciogullari.com/">
+                    <h3>E-Ticaret Web Portalı Yöneticisi</h3>
+                    <h4>Saatçioğulları Optik Market, Website, Yenişehir, Mersin, TÜRKİYE </h4>
+                    <p>• OpenCart modülü kullanıcı yönetimi  • Web sitesi dijital pazarlamasına uygun başlık tasarımları oluşturma • PHP projesinin kurulumundan yayınlanmasına kadar çalışmalar yürüttüm • Yönetim panelinin modüllerle birlikte kullanılması.</p>
+                  </a>
+                </section>
+                <section style={{ flexDirection: 'row', }}>
+                  <span class="tag">OPENCART</span>
+                  <span class="tag">MYSQL</span>
+                </section>
+
+              </div>
+              <div className="col-xs" style={{ backgroundColor: '#f8f9fa', margin: '0% 4%', }}>
+
+                <section>
+                  <ul>
+                    <li>
+                      <u>08/2019 —  11/2019</u>
+                    </li>
+                  </ul>
+                </section>
+
+              </div>
+
+            </div>
+            {/* PROJECT */}
+            {/* PROJECT */}
+            <div className="component" style={{ padding: '0% 0%', }}>
+
+              <div className="col-md">
+
+                <section>
+                  <a href="#">
+                    <h3>Kullanıcı Arayüzü Tasarımcısı</h3>
+                    <h4>Sözler Ülkesi, Android-app, BT, Program, Yenişehir, Mersin, TÜRKİYE</h4>
+                    <p>• Uygulamanın gelişmiş devremülklerine uygun tasarımlar yayınladı • Kullanıcının uygulamada gezinirken istediği bilgi ve hedeflere ulaşmasını sağladı • Arama motoru optimizasyonu (SEO) ve marka hizmetlerine ilişkin fikirler için danışıldı • Photoshop kullanarak kullanıcı arayüzü tasarımı. • Grafik tasarım aşamasında animasyonlar, logolar, bannerlar, infografikler, arayüz butonları gibi araçlar tasarlandı.</p>
+                  </a>
+                </section>
+
+              </div>
+              <div className="col-xs" style={{ backgroundColor: '#f8f9fa', margin: '0% 4%', }}>
+
+                <section>
+                  <ul>
+                    <li>
+                      <u>03/2019 —  08/2019</u>
+                    </li>
+                  </ul>
+                </section>
+
+              </div>
+
+            </div>
+            {/* PROJECT */}
+
+
+
+
+
+
+
+
+
+
+          </div>
+
+
+
+
+        </main>
+      );
+    };
+
+    function About() {
+      return (
+        <main className="middledoc" >
+
+
+          <div className="container-fluid" >
+
+            <div className="component" style={{ padding: '0', }}>
+
+              <div className="col-md" style={{ padding: '0', height: '99vh' }}>
+
+                <img src="assets/icon/profile.jpg" alt="Placeholder" style={{ width: '100%', height: '100%', objectFit: 'cover', }} />
+
+              </div>
+
+              <div className="col-md" style={{ justifyContent: 'center', }}>
+
+                <article>
+                  <h1 style={{ fontSize: '50px', fontWeight: '900', fontFamily: 'Poppins, sans-serif', }} >Ben <span style={{ fontSize: '50px', color: '#1eafed', fontWeight: '900', border: '0', background: 'none' }} >Can Ata</span> Arayüz Geliştirici ve Tasarımcı</h1>
+                  <p>Uzmanlıkla kodlama ve Web uygulamalarının düzeni ve tasarımı, sonuç odaklı Arayüz Geliştirme, performans sorunlarının planlanması ve uygulanması, çapraz tarayıcı, duyarlı kullanıcı arayüzü.</p>
+                </article>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+        </main>
+      );
+    };
+
+    function Contact() {
+
+      return (
+        <main className="middledoc">
+
+          <div className="container" >
+
+            <div className="component">
+
+              <div className="row">
+
+                <section>
+                  <h3>İletişim Bilgileri</h3>
+                </section>
+
+
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div className="container" >
+
+            <div className="component">
+
+              <div className="product">
+                <div className="product-text" style={{ flex: '1 1 100%', }}>
+                  <h3>Adres:</h3>
+                  <p>İsmet İnönü Bulvarı, Yenişehir Mersin 33110 TÜRKİYE</p>
+                </div>
+              </div>
+              <div className="product">
+                <div className="product-text" style={{ flex: '1 1 100%', }}>
+                  <h3>Telefon:</h3>
+                  <p>+90 552 658 05 62</p>
+                </div>
+              </div>
+              <div className="product">
+                <div className="product-text" style={{ flex: '1 1 100%', }}>
+                  <h3>Eposta:</h3>
+                  <p>canata09074@gmail.com</p>
+                </div>
+              </div>
+              <div className="product">
+                <div className="product-text" style={{ flex: '1 1 100%', }}>
+                  <h3>Website</h3>
+                  <p>can-ata-portfoy.vercel.app</p>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div className="container" >
+
+            <div className="component">
+
+              <div className="col-sm">
+
+                <div style={{ width: '100%', height: '500px', backgroundColor: '#f8f9fa', }}>
+                  <form className="form-container" style={{ width: '100%', marginTop: '1rem' }}>
+
+                    <div className="form-group" >
+                      <input type="text" id="firstName" name="firstName" value="" placeholder='Adınız:' className="form-control" />
+                    </div>
+
+                    <div className="form-group" >
+                      <input type="text" id="lastName" name="lastName" value="" placeholder='Soyadınız:' className="form-control" />
+                    </div>
+
+                    <div className="form-group">
+                      <input type="text" id="subject" name="subject" value="" placeholder='Konu' className="form-control" />
+                    </div>
+
+                    <div className="form-group">
+                      <textarea type="text" id="message" name="message" cols='30' rows='7' value="" placeholder='Mesajınız' className="form-control" />
+                    </div>
+
+                    <button type="submit" className="submit-button">Mesaj Gönder</button>
+                  </form>
+                </div>
+
+
+
+              </div>
+              <div className="col-md">
+
+                <div style={{ width: '100%', height: '500px' }}>
+
+                  <div className="iframe-container" style={{ width: '100%', height: '100%', zIndex: '1' }}>
+                    <iframe
+                      src="https://maps.google.com/maps?q=ismet%20in%C3%B6n%C3%BC%20bulvar%C4%B1%20no:200&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
+                      frameborder="0" scrolling="no" style={{ width: '100%', height: '100%', border: '0' }}
+                      allowfullscreen></iframe>
+                  </div>
+
+                </div>
+
+
+
+              </div>
+
+            </div>
+
+
+          </div>
+
+
+        </main>
+      );
+    };
+
+    const pagesMap = {
+      projectdetail: ProjectDetail,
+      experience: Experience,
+      about: About,
+      contact: Contact,
+    };
+
+    function Header() {
+      const [page, setPage] = useState('projectdetail');
+
+
+      const projectdetailMenuItems = [
+        {
+          name: 'ProjectDetail',
+          link: 'projectdetail',
+          submenu: [
+            {
+              name: 'Serem Metal',
+              content: [
+                <h4>Teknik yapıştırıcı gibi alanlarda üretim yapan kurumsal firmanın websitesidir. Tanıtılan hizmetler Çimento esaslı sıvalar, Seramik yapıştırıcıları, Seramik derz dolguları gibi kategorilere dahildir. Kullanıcıların yapıştırıcı malzeme gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır. </h4>
+              ],
+              date: [<small>Şub, 2025 Kurumsal</small>],
+              url: "https://seremmetal.com/",
+            },
+            {
+              name: 'Ata Yapı Mimarlık',
+              content: [
+                <h4>Mimarlık ve Mühendislik gibi alanlarda hizmet veren kurumsal firmanın websitesidir. Tanıtılan hizmetler mimarlık ve mühendislik hizmetleri gibi kategorilere dahildir. Kullanıcıların rahat yaşam gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır. </h4>
+              ],
+              date: [<small>Oca, 2025 Kurumsal</small>],
+              url: "https://atayapimimarlik.gen.tr/",
+            },
+            {
+              name: 'Dijital Dershanem',
+              content: [
+                <h4>Üniversite öğrencilerine yönelik çevrimiçi derslerin konu anlatımını, deneme sınavlarının satışı yapılan bir e-ticaret websitesidir. Satılan çevrimiçi dersler ÖABT, KPSS Ders konuları gibi kategorilere dahildir. Öğrencilerin eğitim ve öğretim gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır. </h4>
+              ],
+              date: [<small>Ara, 2024 Çevrimiçi Eğitim Platformu</small>],
+              url: "#",
+            },
+            {
+              name: 'TUSDATA',
+              content: [
+                <h4>Tıp öğrencilerine yönelik çevrimiçi derslerin konu anlatımını, deneme sınavlarının satışı yapılan bir e-ticaret websitesidir. Satılan çevrimiçi dersler TUS, DUS Ders konuları gibi kategorilere dahildir. Öğrencilerin eğitim ve öğretim gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır. </h4>
+              ],
+              date: [<small>Oca, 2024 Çevrimiçi Eğitim Platformu</small>],
+              url: "https://www.tusdata.com/",
+            },
+            {
+              name: 'Medyarella Creative',
+              content: [
+                <h4>Reklam prodüksiyon, Kreatif prodüksiyon ve Kamera çekimi görsel içerik üretimi alanlarında reklamcılık yapan kurumsal firmanın websitesidir. Tanıtılan hizmetler tanıtıcı reklam hizmetleri gibi kategorilere dahildir. Kullanıcıların tanıtım ve prodüksiyon gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır. </h4>
+              ],
+              date: [<small>Kas, 2023 Reklam</small>],
+              url: "https://www.aymucevher.com/",
+            },
+            {
+              name: 'E-Tail Market',
+              content: [
+                <h4>Dijital oyun kartı, Bilgisayar oyunları gibi ürünlerin satışı yapılan bir e-ticaret websitesidir. Satılan ürünler tüm dijital ürünleri kategorilerini kapsamaktadır. Kullanıcıların dijital alanda eğlence gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır. </h4>
+              ],
+              date: [<small>Tem, 2023 E-Ticaret</small>],
+              url: "https://www.etail.com.tr/",
+            },
+            {
+              name: 'Coin Modules Kripto',
+              content: [
+                <h4>Kripto para gibi ürünlerin satışı yapılan bir e-ticaret websitesidir. Satılan ürünler kripto para haberleri gibi kategorilere dahildir. Kullanıcıların çevrimiçi varlık gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır. </h4>
+              ],
+              date: [<small>Tem, 2022 E-Ticaret</small>],
+              url: "#",
+            },
+            {
+              name: 'Feka Reklam',
+              content: [
+                <h4>Reklam, Tabela, Ahşap Giydirme ve Mühendislik gibi alanlarda üretim yapan kurumsal firmanın websitesidir. Tanıtılan hizmetler tanıtıcı reklam hizmetleri gibi kategorilere dahildir. Kullanıcıların tanıtım ve mühendislik gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır. </h4>
+              ],
+              date: [<small>Nis, 2022 Kurumsal</small>],
+              url: "#",
+            },
+            {
+              name: 'Saatçioğulları Optik Market',
+              content: [
+                <h4>Optik gözlük, Saat gibi ürünlerin satışı yapılan bir e-ticaret websitesidir. Satılan ürünler aksesuar koleksiyonları gibi kategorilere dahildir. Kullanıcıların aksesuar gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır. </h4>
+              ],
+              date: [<small>Kas, 2019 E-Ticaret</small>],
+              url: "https://www.saatciogullari.com/",
+            },
+
+          ]
+        },
+      ];
+
+      const [activeSubmenu, setActiveSubmenu] = useState(projectdetailMenuItems[0].submenu);
+      const menuItems = [...projectdetailMenuItems];
+
+
+
+
+      const handleClick = (newPage) => {
+        setPage(newPage);
+      };
+
+      const handleMenuClick = (submenu) => {
+        setActiveSubmenu(submenu);
+      };
+
+      const SelectedPage = pagesMap[page];
+
+
+
+
+      // Toggle dropdown menu visibility
+      const [isSide, setSide] = useState(true);
+
+      const toggleSide = () => {
+        setSide(!isSide);
+      };
+
+      // Toggle dropdown menu width
+      const [isExpanded, setExpanded] = useState(false);
+
+      const toggleMenu = () => {
+        setExpanded(!isExpanded);
+      };
+
+      const [isOpen, setIsOpen] = useState(true);
+
+      const toggleDropdown = () => {
+        setIsOpen(!isOpen);
+      };
+
+      const handleClickOutside = (event) => {
+        const dropdownElement = document.querySelector('.sidebar');
+        if (dropdownElement && !dropdownElement.contains(event.target)) {
+          setIsOpen(false);
+        }
+      };
+
+      useEffect(() => {
+        document.addEventListener('click', handleClickOutside);
+
+        return () => {
+          document.removeEventListener('click', handleClickOutside);
+        };
+      }, []);
+
+
+      useEffect(() => {
+        window.gtranslateSettings = {
+          default_language: "tr",
+          languages: ["tr", "de", "en"],
+          wrapper_selector: ".gtranslate_wrapper",
+          switcher_horizontal_position: "right",
+          switcher_vertical_position: "top"
+        };
+
+        const script = document.createElement('script');
+        script.src = "https://cdn.gtranslate.net/widgets/latest/float.js";
+        script.defer = true;
+        document.body.appendChild(script);
+
+        return () => {
+          document.body.removeChild(script);
+        };
+      }, []);
+
+      return (
+        <div className="App">
+
+
+          <div className="sidebar"  >
+
+
+            <div className="tomenu" onClick={toggleSide}  >
+              <a href="#link1">Link 1</a>
+            </div>
+
+            <div className="dropdown-content" style={{ display: isSide ? 'block' : 'none' }} >
+              <div className={`sidedoc ${isExpanded ? 'expanded' : ''}`}>
+
+                <section>
+                  {menuItems.map((item, index) => (
+                    <div key={index} className="button">
+                      <a onClick={() => { handleMenuClick(item.submenu); handleClick(item.link); setIsOpen(true); toggleMenu(); }}>
+                        <span style={{ fontSize: '16px', }}>{item.name}</span>
+                      </a>
+                    </div>
+                  ))}
+                  <div className="button"><a onClick={() => { handleClick('experience'); setIsOpen(false); }} href="#experience"><span style={{ fontSize: '16px', }}>Experience</span></a></div>
+                  <div className="button"><a onClick={() => { handleClick('about'); setIsOpen(false); }} href="#about"><span style={{ fontSize: '16px', }}>About</span></a></div>
+                  <div className="button"><a onClick={() => { handleClick('contact'); setIsOpen(false); }} href="#contact"><span style={{ fontSize: '16px', }}>Contact</span></a></div>
+                </section>
+                <section>
+
+                  <div className="masked">Can <br />Ata</div>
+
+                  <address>
+                    <p><small>&copy; 2025</small>CAN ATA. Her hakkı saklıdır</p>
+                  </address>
+
+
+                  <section style={{ display: 'inline-flex', flexDirection: 'row', flexWrap: 'nowrap', alignItems: 'stretch' }}>
+                    <a href="https://github.com/canata09">
+                      <i className="fab fa-square-github"></i>
+                    </a>
+                    <a href="https://www.behance.net/canata3">
+                      <i className="fab fa-square-behance"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/canataweb">
+                      <i className="fab fa-linkedin"></i>
+                    </a>
+                  </section>
+                </section>
+
+
+              </div>
+              <div className="subdoc" style={{ display: isOpen ? 'block' : 'none' }} >
+
+
+
+                <div className="container-fluid" >
+
+                  <div className="component" style={{ padding: '0', height: '100%', }}>
+
+
+                    <div className="col-md">
+
+
+
+                      {activeSubmenu && activeSubmenu.length > 0 ? (
+                        activeSubmenu.map((subitem, index) => (
+                          <div className="gallery-item" key={index}>
+
+                            <div class="gallery-item-icon">
+                              <a href={subitem.url}>
+                                <i class="fas fa-file"></i>
+                              </a>
+                            </div>
+                            <div class="gallery-item-text">
+                              <a>
+                                <h2>{subitem.name}</h2>
+                                <small>Dec 14, 2018 Travel 5 Comment</small>
+                                {subitem.content}
+                              </a>
+                              <a onClick={() => { setIsOpen(false); handleMenuClick([subitem]) }}>Proje Ayrıntılarını Görüntüle →</a>
+                            </div>
+
+
+
+                          </div>
+                        ))
+                      ) : (
+                        <div>No content available</div>
+                      )}
+
+
+
+                    </div>
+
+
+                    <div className="col-xs" style={{ height: '100%', backgroundColor: '#f8f9fa', margin: '0% 4%', }}>
+
+
+                      <section>
+                        <h3>Makaleler</h3>
+                        <ul>
+                          <li>Giriş
+                            <span>(8)</span>
+                          </li>
+                          <li>Yetkinlikler
+                            <span>(6)</span>
+                          </li>
+                          <li>Kişilik
+                            <span>(2)</span>
+                          </li>
+                        </ul>
+                      </section>
+                      <div style={{ marginBottom: '20px', width: '100%', textAlign: 'left' }}>
+                        <ul style={{ listStyleType: 'none', padding: '0', margin: '0', width: '100%' }}>
+                          <li
+                            style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: '#f9f9f9', marginBottom: '10px', padding: '10px 15px' }}>
+                            <img src="assets/icon/pdf.png" alt="Article Image" style={{ width: '100px', borderRadius: '4px' }} />
+                            <div style={{ marginLeft: '15px', marginBottom: '15px', width: '100%' }}>
+                              <p style={{ color: '#999', fontSize: '12px' }}>2025</p>
+                              <h4 style={{ fontSize: '14px', margin: '10px 0' }}>Tam Özgeçmişi Görüntüle</h4>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                      <section>
+                        <h3>Etiket Bulutu</h3>
+                      </section>
+                      <section style={{ flexDirection: 'row', }}>
+                        <span className="tag">NODEJS</span>
+                        <span className="tag">REACTJS</span>
+                        <span className="tag">VUEJS</span>
+                        <span className="tag">TYPESCRIPT</span>
+                        <span className="tag">TAILWIND</span>
+                        <span className="tag">HTML & CSS</span>
+                        <span className="tag">JAVASCRIPT</span>
+                        <span className="tag">WORDPRESS</span>
+                        <span className="tag">WORDPRESS PLUGIN</span>
+                        <span className="tag">GUTENBERG BLOCKS</span>
+                        <span className="tag">OPENCART</span>
+                        <span className="tag">PHP</span>
+                        <span className="tag">TWIG</span>
+                        <span className="tag">AJAX</span>
+                        <span className="tag">MYSQL</span>
+                      </section>
+                      <article>
+                        <h3>Günün Sözü</h3>
+                        <h4>"Başarı, en iyi hazırlananların hakkıdır." </h4>
+                        <p>– Louis Pasteur</p>
+                      </article>
+
+
+
+
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+
+
+
+              </div>
+            </div>
+
+
+          </div>
+
+          <SelectedPage activeSubmenu={activeSubmenu} />
+
+
+
+
+
+          <div className="gtranslate_wrapper"></div>
+        </div>
+      );
+    };
+
+    function App() {
+
+      return (
+        <Header />
+      );
+    };
+
+    const container = document.getElementById('root');
+    const root = ReactDOM.createRoot(container);
+    root.render(
+      <App />
+
+    )
+  </script>
+</body>
+
+</html>

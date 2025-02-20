@@ -1,0 +1,9 @@
+.middledoc {
+    width: 80%;
+    float: left;
+    height: 100vh;
+    z-index: 998;
+    position: relative;
+    background-color: #fff;
+    margin-left: 20%;
+}
