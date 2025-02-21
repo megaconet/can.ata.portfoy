@@ -952,7 +952,7 @@
           <div className="sidebar"  >
 
 
-            <div className="tomenu" onClick={toggleSide}  >
+            <div className="tomenu" onClick={()=>{toggleSide(); setExpanded(false);}}  >
                 <a href="" className="hamburger-link" ><i class="fas fa-bars"></i></a>
             </div>
 
@@ -967,9 +967,9 @@
                       </a>
                     </div>
                   ))}
-                  <div className="button"><a onClick={() => { handleClick('experience'); setIsOpen(false); }} href="#experience"><span style={{ fontSize: '16px', }}>Experience</span></a></div>
-                  <div className="button"><a onClick={() => { handleClick('about'); setIsOpen(false); }} href="#about"><span style={{ fontSize: '16px', }}>About</span></a></div>
-                  <div className="button"><a onClick={() => { handleClick('contact'); setIsOpen(false); }} href="#contact"><span style={{ fontSize: '16px', }}>Contact</span></a></div>
+                  <div className="button"><a onClick={() => { handleClick('experience'); setExpanded(true); setIsOpen(false); }} href="#experience"><span style={{ fontSize: '16px', }}>Experience</span></a></div>
+                  <div className="button"><a onClick={() => { handleClick('about'); setExpanded(true); setIsOpen(false); }} href="#about"><span style={{ fontSize: '16px', }}>About</span></a></div>
+                  <div className="button"><a onClick={() => { handleClick('contact'); setExpanded(true); setIsOpen(false); }} href="#contact"><span style={{ fontSize: '16px', }}>Contact</span></a></div>
                 </section>
                 <section>
 
