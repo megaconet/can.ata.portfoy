@@ -120,6 +120,7 @@
     display: inline-flex;
     flex-direction: column;
     justify-content: space-between;
+    overflow: auto;
   }
 
   /* to menu */
