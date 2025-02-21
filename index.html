@@ -891,11 +891,6 @@
 
 
       // Toggle dropdown menu visibility
-      const [isSide, setSide] = useState(true);
-
-      const toggleSide = () => {
-        setSide(!isSide);
-      };
 
       // Toggle dropdown menu width
       const [isExpanded, setExpanded] = useState(false);
@@ -952,11 +947,11 @@
           <div className="sidebar"  >
 
 
-            <div className="tomenu" onClick={()=>{toggleSide(); setExpanded(false);}}  >
+            <div className="tomenu" onClick={()=>{ setExpanded(false);}} >
                 <a href="" className="hamburger-link" ><i class="fas fa-bars"></i></a>
             </div>
 
-            <div className="dropdown-content" style={{ display: isSide ? 'block' : 'none' }} >
+            <div className="dropdown-content" >
               <div className={`sidedoc ${isExpanded ? 'expanded' : ''}`}>
 
                 <section>
