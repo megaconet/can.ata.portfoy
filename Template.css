@@ -316,6 +316,10 @@ textarea::placeholder {
     font-family: 'Poppins', sans-serif;
 }
 
+small {
+    color: #bfbfbf;
+    margin-bottom: 4%;
+}
 
 .newsletter {
     margin-bottom: 20px;
