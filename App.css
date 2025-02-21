@@ -84,6 +84,8 @@
     float: left;
     height: 100%;
     z-index: 999;
+    background-color: #7cd1f5;
+    border: 1px solid #dddddd;
   }
 
   /* Sub doc */
@@ -127,6 +129,8 @@
     float: left;
     height: 100%;
     z-index: 999;
+    background-color: #7cd1f5;
+    border: 1px solid #dddddd;
   }
 
   /* Sub doc */
@@ -149,6 +153,10 @@
 /* Sub doc */
 .subdoc.expanded {
   display: none;
+}
+
+.tomenu i {
+  color: #fff;
 }
 
 
