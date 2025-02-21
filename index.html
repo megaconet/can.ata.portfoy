@@ -1013,12 +1013,12 @@
                               </a>
                             </div>
                             <div class="gallery-item-text">
-                              <a>
-                                <h2>{subitem.name}</h2>
-                                <small>Dec 14, 2018 Travel 5 Comment</small>
+                              <a style={{ display: 'flex', flexDirection: 'column' }}>
+                                <h1>{subitem.name}</h1>
+                                {subitem.date}
                                 {subitem.content}
                               </a>
-                              <a onClick={() => { setIsOpen(false); handleMenuClick([subitem]) }}>Proje Ayrıntılarını Görüntüle →</a>
+                              <a style={{ color: '#1eafed',  }} onClick={() => { setIsOpen(false); handleMenuClick([subitem]) }}>Proje Ayrıntılarını Görüntüle →</a>
                             </div>
 
 
