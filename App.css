@@ -111,7 +111,9 @@
   /* Side doc */
   .sidedoc {
     width: 89vw;
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 10vw;
     float: left;
     height: 100%;
     z-index: 999;
