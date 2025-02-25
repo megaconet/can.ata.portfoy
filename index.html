@@ -957,14 +957,14 @@
                 <section>
                   {menuItems.map((item, index) => (
                     <div key={index} className="button">
-                      <a onClick={() => { handleMenuClick(item.submenu); handleClick(item.link); setIsOpen(true); toggleMenu(); }}>
+                      <a onClick={() => { handleMenuClick(item.submenu); handleClick(item.link); setIsOpen(true); toggleMenu(); }} href="#projects">
                         <span style={{ fontSize: '16px', }}>{item.name}</span>
                       </a>
                     </div>
                   ))}
-                  <div className="button"><a onClick={() => { handleClick('experience'); setExpanded(true); setIsOpen(false); }} href="#experience"><span style={{ fontSize: '16px', }}>Experience</span></a></div>
-                  <div className="button"><a onClick={() => { handleClick('about'); setExpanded(true); setIsOpen(false); }} href="#about"><span style={{ fontSize: '16px', }}>About</span></a></div>
-                  <div className="button"><a onClick={() => { handleClick('contact'); setExpanded(true); setIsOpen(false); }} href="#contact"><span style={{ fontSize: '16px', }}>Contact</span></a></div>
+                  <div className="button"><a onClick={() => { handleClick('experience'); setExpanded(true); setIsOpen(false); }} href="#experience"><span style={{ fontSize: '16px', }}>Yetkinlikler</span></a></div>
+                  <div className="button"><a onClick={() => { handleClick('about'); setExpanded(true); setIsOpen(false); }} href="#about"><span style={{ fontSize: '16px', }}>Hakkımda</span></a></div>
+                  <div className="button"><a onClick={() => { handleClick('contact'); setExpanded(true); setIsOpen(false); }} href="#contact"><span style={{ fontSize: '16px', }}>İletişim</span></a></div>
                 </section>
                 <section>
 
