@@ -47,7 +47,7 @@
   <script type="text/babel">
     const { useState, useEffect } = React;
 
-    function ProjectDetail({ activeSubmenu }) {
+    function Projeler({ activeSubmenu }) {
       const [filteredNotifications, setFilteredNotifications] = useState([]);
 
       // Sample notifications data
@@ -779,20 +779,20 @@
     };
 
     const pagesMap = {
-      projectdetail: ProjectDetail,
+      projeler: Projeler,
       experience: Experience,
       about: About,
       contact: Contact,
     };
 
     function Header() {
-      const [page, setPage] = useState('projectdetail');
+      const [page, setPage] = useState('projeler');
 
 
-      const projectdetailMenuItems = [
+      const projelerMenuItems = [
         {
-          name: 'ProjectDetail',
-          link: 'projectdetail',
+          name: 'Projeler',
+          link: 'projeler',
           submenu: [
             {
               name: 'Serem Metal',
@@ -871,8 +871,8 @@
         },
       ];
 
-      const [activeSubmenu, setActiveSubmenu] = useState(projectdetailMenuItems[0].submenu);
-      const menuItems = [...projectdetailMenuItems];
+      const [activeSubmenu, setActiveSubmenu] = useState(projelerMenuItems[0].submenu);
+      const menuItems = [...projelerMenuItems];
 
 
 
