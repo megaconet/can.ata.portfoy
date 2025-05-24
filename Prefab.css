@@ -342,7 +342,6 @@
 
 #mention:hover {
     background-color: rgba(30,41,59,.03);
-    border: 1px solid rgba(30,41,59,.02);
     border-radius: .5rem;
     cursor: pointer;
 }
