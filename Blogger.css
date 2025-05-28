@@ -94,3 +94,26 @@
     color: black;
     font-size: 4.2vw;
 }
+
+
+
+
+@media only screen and (min-width: 1024px) {
+
+    .topics {
+        margin: 1rem;
+        display: flex;
+        flex-direction: row;
+    }
+
+}
+
+@media only screen and (max-width: 1024px) {
+
+    .topics {
+        margin: 1rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+}
