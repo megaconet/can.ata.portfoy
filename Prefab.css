@@ -428,12 +428,143 @@
     text-align: left;
 }
 
+
+
 #mention {
     margin: 4% 0%;
 }
 
 #mention:hover {
-    background-color: rgba(30, 41, 59, .03);
+    background-color: rgba(30, 41, 59, .04);
     border-radius: .5rem;
     cursor: pointer;
 }
+
+
+
+
+
+
+
+
+
+
+/*
+* CARD UI
+*
+*/
+
+
+
+/*
+ * Reusable Card UI
+ */
+.card-ui {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #DEE4DE;
+    border: 1px solid rgba(85, 85, 85, 0.15);
+    border-radius: 10px;
+    padding: 1rem;
+}
+
+@media only screen and (min-width: 1024px) {
+
+    .card-ui-icon {
+        height: auto;
+        line-height: 100px;
+        text-align: center;
+        flex: 1 1 calc(10% - 10px);
+        margin: auto 10%;
+    }
+
+    .card-ui-text {
+        flex: 20 1 calc(10% - 10px);
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
+    }
+
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    .card-ui-icon {
+        height: auto;
+        line-height: 100px;
+        text-align: center;
+        flex: 1 1 calc(10% - 10px);
+        margin: auto 10%;
+    }
+
+    .card-ui-text {
+        flex: 20 1 calc(10% - 10px);
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
+    }
+
+}
+
+@media only screen and (max-width: 768px) {
+
+    .card-ui-icon {
+        height: auto;
+        line-height: 6.6vw;
+        text-align: center;
+        flex: 1 1 100%;
+        margin: 10% auto;
+    }
+
+    .card-ui-text {
+        flex: 20 1 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
+    }
+
+}
+
+
+.card-ui-icon i {
+    color: #fff;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+    font-size: 2.2vw;
+    padding: 2%;
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+}
+
+.card-ui-icon img {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 2%;
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+}
+
+.card-ui h3 {
+    color: #555;
+    font-size: 0.6vw;
+    margin-bottom: 10px;
+    padding: 0% 10%;
+    text-align: left;
+}
+
+.card-ui p {
+    font-size: 0.6vw;
+    color: #2193b0;
+    padding: 0 10%;
+    text-align: left;
+}
+
