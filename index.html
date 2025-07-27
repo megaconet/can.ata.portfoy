@@ -744,74 +744,65 @@
       contact: Contact,
     };
 
-    const Sidemenu = ({ handleClick, menuItems, activeSubmenu, handleMenuClick }) => {
-
-      return (
-        <div className="sidebar"  >
+    const Sidemenu = ({ handleClick, menuItems, activeSubmenu, handleMenuClick, setActiveSubContent }) => {
 
 
-            <div className="tomenu" >
-                <ul>
-                    <li><a onClick={() => handleClick('universal')} href="#universal">Universal</a></li>
-                    <li><a onClick={() => handleClick('normalize')} href="#normalize">Normalize</a></li>
-                </ul>
-            </div>
+        return (
 
-            <div className="dropdown-content">
+            <div className="sidebar"  >
 
-                <div className="sidedoc">
 
+                <div className="tomenu" >
                     <ul>
-                        {menuItems.map((item, index) => (
-                            <div key={index} className="button">
-                                <a onClick={() => { handleMenuClick(item.submenu); handleClick(item.link); }} href="#projects">
-                                    <span style={{ fontSize: '16px', }}>{item.name}</span>
-                                </a>
-                            </div>
-                        ))}
+                        <li><a onClick={() => handleClick('universal')} href="#universal">Universal</a></li>
+                        <li><a onClick={() => handleClick('normalize')} href="#normalize">Normalize</a></li>
                     </ul>
+                </div>
+
+                <div className="dropdown-content">
+
+                    <div className="sidedoc">
+
+                        <ul>
+                            {menuItems.map((item, index) => (
+                                <li key={index}>
+                                    <a onClick={() => { handleMenuClick(item.submenu); }}>
+                                        {item.name}
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
+
+                    </div>
+                    <div className="subdoc">
+
+
+                        {activeSubmenu && (
+                            <ul>
+                                {activeSubmenu.map((subitem, index) => (
+                                    <li key={index}>
+                                        <a onClick={() => setActiveSubContent(subitem)} href="#!">
+                                            {subitem.name}
+                                        </a>
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
+
+
+                    </div>
 
                 </div>
-                <div className="subdoc">
 
 
-                    {activeSubmenu && activeSubmenu.length > 0 ? (
-                        activeSubmenu.map((subitem, index) => (
-                            <div className="gallery-item" key={index}>
-
-                                <div class="gallery-item-icon">
-                                    <a href={subitem.url}>
-                                        <i class="fas fa-file"></i>
-                                    </a>
-                                </div>
-                                <div class="gallery-item-text">
-                                    <a style={{ display: 'flex', flexDirection: 'column' }}>
-                                        <h1>{subitem.name}</h1>
-                                        {subitem.date}
-                                        {subitem.content}
-                                    </a>
-                                    <a style={{ color: '#1eafed', }} onClick={() => { handleMenuClick([subitem]) }}>Proje Ayrıntılarını Görüntüle →</a>
-                                </div>
-
-                            </div>
-                        ))
-                    ) : (
-                        <div>No content available</div>
-                    )}
-
-
-                </div>
 
             </div>
-
-
-
-        </div>
-      );
+        );
     };
 
     function Header() {
       const [page, setPage] = useState('projeler');
+      const [activeSubContent, setActiveSubContent] = useState(null);
 
 
       const projelerMenuItems = [
@@ -904,10 +895,12 @@
 
       const handleClick = (newPage) => {
         setPage(newPage);
+        setActiveSubContent(null);
       };
 
       const handleMenuClick = (submenu) => {
         setActiveSubmenu(submenu);
+        setActiveSubContent(null);
       };
 
       const SelectedPage = pagesMap[page];
@@ -977,33 +970,18 @@
             <div className="button"><a onClick={() => { handleClick('contact'); }} href="#contact"><span style={{ fontSize: '16px', }}>İletişim</span></a></div>
           </section>
 
-          <Sidemenu handleClick={handleClick} menuItems={menuItems} activeSubmenu={activeSubmenu} handleMenuClick={handleMenuClick} />
+          <Sidemenu handleClick={handleClick} menuItems={menuItems} activeSubmenu={activeSubmenu} handleMenuClick={handleMenuClick} setActiveSubContent={setActiveSubContent} />
 
-          {activeSubmenu && activeSubmenu.length > 0 ? (
-            activeSubmenu.map((subitem, index) => (
-              <div className="gallery-item" key={index}>
+          <SelectedPage />
 
-                <div class="gallery-item-icon">
-                  <a href={subitem.url}>
-                    <i class="fas fa-file"></i>
-                  </a>
-                </div>
-                <div class="gallery-item-text">
-                  <a style={{ display: 'flex', flexDirection: 'column' }}>
-                    <h1>{subitem.name}</h1>
-                  </a>
-                  <a style={{ color: '#1eafed', }} onClick={() => { handleMenuClick([subitem]) }}>Proje Ayrıntılarını Görüntüle →</a>
-                </div>
-
-              </div>
-            ))
-          ) : (
-            <div>No content available</div>
+          {activeSubContent && (
+            <div>
+              <h3>{activeSubContent.name}</h3>
+              {activeSubContent.content.map((contentItem, index) => (
+                <div key={index}>{contentItem}</div>
+              ))}
+            </div>
           )}
-
-
-
-          <SelectedPage activeSubmenu={activeSubmenu} />
 
 
 
