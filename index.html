@@ -744,6 +744,72 @@
       contact: Contact,
     };
 
+    const Sidemenu = ({ handleClick, menuItems, activeSubmenu, handleMenuClick }) => {
+
+      return (
+        <div className="sidebar"  >
+
+
+            <div className="tomenu" >
+                <ul>
+                    <li><a onClick={() => handleClick('universal')} href="#universal">Universal</a></li>
+                    <li><a onClick={() => handleClick('normalize')} href="#normalize">Normalize</a></li>
+                </ul>
+            </div>
+
+            <div className="dropdown-content">
+
+                <div className="sidedoc">
+
+                    <ul>
+                        {menuItems.map((item, index) => (
+                            <div key={index} className="button">
+                                <a onClick={() => { handleMenuClick(item.submenu); handleClick(item.link); }} href="#projects">
+                                    <span style={{ fontSize: '16px', }}>{item.name}</span>
+                                </a>
+                            </div>
+                        ))}
+                    </ul>
+
+                </div>
+                <div className="subdoc">
+
+
+                    {activeSubmenu && activeSubmenu.length > 0 ? (
+                        activeSubmenu.map((subitem, index) => (
+                            <div className="gallery-item" key={index}>
+
+                                <div class="gallery-item-icon">
+                                    <a href={subitem.url}>
+                                        <i class="fas fa-file"></i>
+                                    </a>
+                                </div>
+                                <div class="gallery-item-text">
+                                    <a style={{ display: 'flex', flexDirection: 'column' }}>
+                                        <h1>{subitem.name}</h1>
+                                        {subitem.date}
+                                        {subitem.content}
+                                    </a>
+                                    <a style={{ color: '#1eafed', }} onClick={() => { handleMenuClick([subitem]) }}>Proje Ayrıntılarını Görüntüle →</a>
+                                </div>
+
+                            </div>
+                        ))
+                    ) : (
+                        <div>No content available</div>
+                    )}
+
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+      );
+    };
+
     function Header() {
       const [page, setPage] = useState('projeler');
 
@@ -903,171 +969,39 @@
         <div className="App">
 
 
-          <div className="sidebar"  >
 
+          <section>
+            <div className="button"><a onClick={() => { handleClick('projeler'); }} href="#projeler"><span style={{ fontSize: '16px', }}>Projeler</span></a></div>
+            <div className="button"><a onClick={() => { handleClick('experience'); }} href="#experience"><span style={{ fontSize: '16px', }}>Yetkinlikler</span></a></div>
+            <div className="button"><a onClick={() => { handleClick('about'); }} href="#about"><span style={{ fontSize: '16px', }}>Hakkımda</span></a></div>
+            <div className="button"><a onClick={() => { handleClick('contact'); }} href="#contact"><span style={{ fontSize: '16px', }}>İletişim</span></a></div>
+          </section>
 
-            <div className="tomenu" onClick={() => { setExpanded(false); }} >
-              <a className="hamburger-link" ><i class="fas fa-bars"></i></a>
-            </div>
+          <Sidemenu handleClick={handleClick} menuItems={menuItems} activeSubmenu={activeSubmenu} handleMenuClick={handleMenuClick} />
 
-            <div className="dropdown-content" >
-              <div className={`sidedoc ${isExpanded ? 'expanded' : ''}`}>
+          {activeSubmenu && activeSubmenu.length > 0 ? (
+            activeSubmenu.map((subitem, index) => (
+              <div className="gallery-item" key={index}>
 
-                <section>
-                  {menuItems.map((item, index) => (
-                    <div key={index} className="button">
-                      <a onClick={() => { handleMenuClick(item.submenu); handleClick(item.link); setIsOpen(true); toggleMenu(); }} href="#projects">
-                        <span style={{ fontSize: '16px', }}>{item.name}</span>
-                      </a>
-                    </div>
-                  ))}
-                  <div className="button"><a onClick={() => { handleClick('experience'); setExpanded(true); setIsOpen(false); }} href="#experience"><span style={{ fontSize: '16px', }}>Yetkinlikler</span></a></div>
-                  <div className="button"><a onClick={() => { handleClick('about'); setExpanded(true); setIsOpen(false); }} href="#about"><span style={{ fontSize: '16px', }}>Hakkımda</span></a></div>
-                  <div className="button"><a onClick={() => { handleClick('contact'); setExpanded(true); setIsOpen(false); }} href="#contact"><span style={{ fontSize: '16px', }}>İletişim</span></a></div>
-                </section>
-                <section>
-
-                  <div className="masked">Can <br />Ata</div>
-
-                  <address>
-                    <p><small>&copy; 2025</small>CAN ATA. Her hakkı saklıdır</p>
-                  </address>
-
-
-                  <section style={{ display: 'inline-flex', flexDirection: 'row', flexWrap: 'nowrap', alignItems: 'stretch' }}>
-                    <a href="https://github.com/canata09">
-                      <i className="fab fa-square-github"></i>
-                    </a>
-                    <a href="https://www.behance.net/canata3">
-                      <i className="fab fa-square-behance"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/canataweb">
-                      <i className="fab fa-linkedin"></i>
-                    </a>
-                  </section>
-                </section>
-
-
-              </div>
-              <div className="subdoc" style={{ display: isOpen ? 'block' : 'none' }} >
-
-
-
-                <div className="container-fluid" >
-
-                  <div className="component" style={{ padding: '0', height: '100%', }}>
-
-
-                    <div className="col-md">
-
-
-
-                      {activeSubmenu && activeSubmenu.length > 0 ? (
-                        activeSubmenu.map((subitem, index) => (
-                          <div className="gallery-item" key={index}>
-
-                            <div class="gallery-item-icon">
-                              <a href={subitem.url}>
-                                <i class="fas fa-file"></i>
-                              </a>
-                            </div>
-                            <div class="gallery-item-text">
-                              <a style={{ display: 'flex', flexDirection: 'column' }}>
-                                <h1>{subitem.name}</h1>
-                                {subitem.date}
-                                {subitem.content}
-                              </a>
-                              <a style={{ color: '#1eafed', }} onClick={() => { setIsOpen(false); handleMenuClick([subitem]) }}>Proje Ayrıntılarını Görüntüle →</a>
-                            </div>
-
-
-
-                          </div>
-                        ))
-                      ) : (
-                        <div>No content available</div>
-                      )}
-
-
-
-                    </div>
-
-
-                    <div className="col-xs" style={{ height: '100%', backgroundColor: '#f8f9fa', margin: '0% 4%', }}>
-
-
-                      <section>
-                        <h3>Makaleler</h3>
-                        <ul>
-                          <li>Giriş
-                            <span>(8)</span>
-                          </li>
-                          <li>Yetkinlikler
-                            <span>(6)</span>
-                          </li>
-                          <li>Kişilik
-                            <span>(2)</span>
-                          </li>
-                        </ul>
-                      </section>
-                      <div style={{ marginBottom: '20px', width: '100%', textAlign: 'left' }}>
-                        <ul style={{ listStyleType: 'none', padding: '0', margin: '0', width: '100%' }}>
-                          <li>
-                            <a href="./can-ata.pdf" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: '#f9f9f9', marginBottom: '10px', padding: '10px 15px' }}>
-                              <img src="assets/icon/pdf.png" alt="Article Image" style={{ width: '100px', borderRadius: '4px' }} />
-                              <div style={{ marginLeft: '15px', marginBottom: '15px', width: '100%' }}>
-                                <p style={{ color: '#999', fontSize: '12px' }}>2025</p>
-                                <h4 style={{ fontSize: '14px', margin: '10px 0' }}>Tam Özgeçmişi Görüntüle</h4>
-                              </div>
-                            </a>
-                          </li>
-                        </ul>
-                      </div>
-                      <section>
-                        <h3>Etiket Bulutu</h3>
-                      </section>
-                      <section style={{ flexDirection: 'row', }}>
-                        <span className="tag">NODEJS</span>
-                        <span className="tag">REACTJS</span>
-                        <span className="tag">VUEJS</span>
-                        <span className="tag">TYPESCRIPT</span>
-                        <span className="tag">TAILWIND</span>
-                        <span className="tag">HTML & CSS</span>
-                        <span className="tag">JAVASCRIPT</span>
-                        <span className="tag">WORDPRESS</span>
-                        <span className="tag">WORDPRESS PLUGIN</span>
-                        <span className="tag">GUTENBERG BLOCKS</span>
-                        <span className="tag">OPENCART</span>
-                        <span className="tag">PHP</span>
-                        <span className="tag">TWIG</span>
-                        <span className="tag">AJAX</span>
-                        <span className="tag">MYSQL</span>
-                      </section>
-                      <section>
-                        <h3>Konular</h3>
-                        <ul>
-                          <li>Ağ protokolleri / Sunucu / Veritabanı / CSS3 / Frontend teknolojileri, NodeJS, ES6, JavaScript, React.js, Vue.js, TypeScript, PHP, HTML5 / Render işleme teknikleri / WordPress, OpenCart Eklenti geliştirme bilgisi / API kullanımı, jQuery, JSON ve XML veri manipülasyonu / Kimlik Doğrulama protokolleri kurulumu / SEO / Sürüm kontrolü kullanımı / Web grafik tasarımı / İngilizce Dili / Sözlü Yazılı</li>
-                        </ul>
-                      </section>
-
-
-
-
-
-                    </div>
-
-                  </div>
-
+                <div class="gallery-item-icon">
+                  <a href={subitem.url}>
+                    <i class="fas fa-file"></i>
+                  </a>
+                </div>
+                <div class="gallery-item-text">
+                  <a style={{ display: 'flex', flexDirection: 'column' }}>
+                    <h1>{subitem.name}</h1>
+                  </a>
+                  <a style={{ color: '#1eafed', }} onClick={() => { handleMenuClick([subitem]) }}>Proje Ayrıntılarını Görüntüle →</a>
                 </div>
 
-
-
-
               </div>
-            </div>
+            ))
+          ) : (
+            <div>No content available</div>
+          )}
 
 
-          </div>
 
           <SelectedPage activeSubmenu={activeSubmenu} />
 
